@@ -19,38 +19,38 @@ class Funcionario{
         $this->id = $id;
     }
 
-    public function getnome(){
+    public function getNome(){
         return $this->nome;
     }
-    public function setnome($nome){
+    public function setNome($nome){
         $this->nome = $nome;
     }
 
-    public function getcpf(){
+    public function getCpf(){
         return $this->cpf;
     }
-    public function setcpf($cpf){
+    public function setCpf($cpf){
         $this->cpf = $cpf;
     }
 
-    public function gettelefone(){
+    public function getTelefone(){
         return $this->telefone;
     }
-    public function settelefone($telefone){
+    public function setTelefone($telefone){
         $this->telefone = $telefone;
     }
 
-    public function getsenha(){
+    public function getSenha(){
         return $this->senha;
     }
-    public function setsenha($senha){
+    public function setSenha($senha){
         $this->senha = $senha;
     }
 
-    public function getemail(){
+    public function getEmail(){
         return $this->email;
     }
-    public function setemail($email){
+    public function setEmail($email){
         $this->email = $email;
     }
 
@@ -68,17 +68,17 @@ class Funcionario{
         $this->data_alteracao = $data_alteracao;
     }
 
-    public function getInclusaoFuncionario_id(){
+    public function getInclusaoFuncionarioId(){
         return $this->inclusao_funcionario_id;
     }
-    public function setInclusaoFuncionario_id($inclusao_funcionario_id){
+    public function setInclusaoFuncionarioId($inclusao_funcionario_id){
         $this->inclusao_funcionario_id = $inclusao_funcionario_id;
     }
 
-    public function getAlteracaofuncionario_id(){
+    public function getAlteracaofuncionarioId(){
         return $this->alteracao_funcionario_id;
     }
-    public function setAlteracaoFuncionario_id($alteracao_funcionario_id){
+    public function setAlteracaoFuncionarioId($alteracao_funcionario_id){
         $this->alteracao_funcionario_id = $alteracao_funcionario_id;
     }
 }

@@ -6,6 +6,8 @@ include_once("class/cliente.php");
 include_once("class/emprestimo.php");
 include_once("class/funcionarios.php");
 include_once("class/livro.php");
+include_once("class/repository/repository.php");
+include_once("class/repository/autor.repository.php");
 
 class Factory{
     public static function db(){
