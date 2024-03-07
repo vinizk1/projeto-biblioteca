@@ -61,10 +61,48 @@ class EmprestimoRepository implements repository
         }
         return null;
     }
-    public static function insert($obj){}
+    public static function insert($obj){
+        $db = DB::getInstance();
+
+        $sql = "INSERT INTO emprestimo (livro_id, cliente_id, data_vencimento, data_devolucao, data_inclusao, inclusao_funcionario_id) VALUES(:livro_id, :cliente_id, :data_vencimento, :data_devolucao, :data_inclusao, :inclusao_funcionario_id)";
+
+        $query = $db->prepare($sql);
+
+        $query->bindValue(":livro_id",$obj->getLivroId());
+        $query->bindValue(":cliente_id",$obj->getClienteId());
+        $query->bindValue(":data_vencimento",$obj->getDataVencimento());
+        $query->bindValue(":data_devolucao",$obj->getDataDevolucao());
+        $query->bindValue(":data_inclusao",$obj->getDataInclusao());
+        $query->bindValue(":inclusao_funcionario_id",$obj->getInclusaoFuncionarioId());
+
+        $query->execute();
+
+        $id = $db->lastInsertId();
+
+        return $id;
+    }
  
-    public static function update($obj){}
+    public static function update($obj){
+        $db = DB::getInstance();
+
+        $sql = "UPDATE emprestimo SET livro_id = :livro_id, data_alteracao = :data_alteracao, data_renovacao = :data_renovacao, alteracao_funcionario_id = :alteracao_funcionario_id Where id = :id";
+
+        $query = $db->prepare($sql);
+        $query->bindValue(":livro_id",$obj->getLivroId());
+        $query->bindValue(":data_renovacao",$obj->getDataRenovacao());
+        $query->bindValue(":data_alteracao",$obj->getDataAlteracao());
+        $query->bindValue(":alteracao_funcionario_id",$obj->getAlteracaoFuncionarioId());
+        $query->bindValue(":id",$obj->getId());
+        $query->execute();
+    }
   
-    public static function delete($id){}
+    public static function delete($id){
+        $db = DB::getInstance();
+
+        $sql = "DELETE FROM emprestimo WHERE id = :id";
+        $query = $db->prepare($sql);
+        $query->bindValue(":id",$id);
+        $query->execute();
+    }
 
 }

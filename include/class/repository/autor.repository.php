@@ -49,10 +49,44 @@ class AutorRepository implements repository
         }
         return null;
     }
-    public static function insert($obj){}
+    public static function insert($obj){
+        $db = DB::getInstance();
+
+        $sql = "INSERT INTO autor (nome, data_inclusao, inclusao_funcionario_id) VALUES(:nome,:data_inclusao,:inclusao_funcionario_id)";
+
+        $query = $db->prepare($sql);
+
+        $query->bindValue(":nome",$obj->getNome());
+        $query->bindValue(":data_inclusao",$obj->getDataInclusao());
+        $query->bindValue(":inclusao_funcionario_id",$obj->getInclusaoFuncionarioId());
+
+        $query->execute();
+
+        $id = $db->lastInsertId();
+
+        return $id;
+    }
  
-    public static function update($obj){}
+    public static function update($obj){
+        $db = DB::getInstance();
+
+        $sql = "UPDATE autor SET nome = :nome, data_alteracao = :data_alteracao, alteracao_funcionario_id = :alteracao_funcionario_id Where id = :id";
+
+        $query = $db->prepare($sql);
+        $query->bindValue(":nome",$obj->getNome());
+        $query->bindValue(":data_alteracao",$obj->getDataAlteracao());
+        $query->bindValue(":alteracao_funcionario_id",$obj->getAlteracaoFuncionarioId());
+        $query->bindValue(":id",$obj->getId());
+        $query->execute();
+    }
   
-    public static function delete($id){}
+    public static function delete($id){
+        $db = DB::getInstance();
+
+        $sql = "DELETE FROM autor WHERE id = :id";
+        $query = $db->prepare($sql);
+        $query->bindValue(":id",$id);
+        $query->execute();
+    }
 
 }
