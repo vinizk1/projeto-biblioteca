@@ -22,7 +22,7 @@
                     <h1>Fazer login na biblioteca do urubu</h1>
                     <div>
                         <h4>Biblioteca do urubu!</h4>
-                        <img src="urubu.jpg">
+                        <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg">
                         <p>Em homenagem ao Zeca</p>
                     </div>
                     <label>CPF
