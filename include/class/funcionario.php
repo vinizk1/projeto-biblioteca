@@ -15,7 +15,7 @@ class Funcionario{
     public function getId(){
         return $this->id;
     }
-    public function setid($id){
+    public function setId($id){
         $this->id = $id;
     }
 
@@ -79,7 +79,7 @@ class Funcionario{
         $this->inclusao_funcionario_id = $inclusao_funcionario_id;
     }
 
-    public function getAlteracaofuncionarioId(){
+    public function getAlteracaoFuncionarioId(){
         return $this->alteracao_funcionario_id;
     }
     public function setAlteracaoFuncionarioId($alteracao_funcionario_id){
