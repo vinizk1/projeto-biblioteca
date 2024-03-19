@@ -6,14 +6,13 @@ if(!Auth::isAuthenticated()){
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Página Inicial da Biblioteca do Urubu</title>
+    <title>Autores da Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -120,7 +119,7 @@ if(!Auth::isAuthenticated()){
                             Funcionários
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                            <li><a class="dropdown-item" href="#">Listagem de Funcionários</a></li>
+                            <li><a class="dropdown-item" href="funcionarios.listagem.php">Listagem de Funcionários</a></li>
                             <li><a class="dropdown-item" href="#">Adicionar Funcionário</a></li>
                         </ul>
                     </li>
@@ -130,7 +129,7 @@ if(!Auth::isAuthenticated()){
                             Livro
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-                            <li><a class="dropdown-item" href="#">Listagem de Livros</a></li>
+                            <li><a class="dropdown-item" href="livro.listagem.php">Listagem de Livros</a></li>
                             <li><a class="dropdown-item" href="#">Adicionar Livro</a></li>
                         </ul>
                     </li>
@@ -141,25 +140,41 @@ if(!Auth::isAuthenticated()){
     </nav>
 
     <div class="header">
-        <h1>Página Inicial da Biblioteca do Urubu</h1>
+        <h1>Listagem de Autores da Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg"
             alt="Logo da Biblioteca">
     </div>
-
     <div class="container">
-        <form method="POST">
-            <br>
-            <button class="btn btn-primary btn-option">Autor</button>
-            <br>
-            <button class="btn btn-primary btn-option">Cliente</button>
-            <br>
-            <button class="btn btn-primary btn-option">Empréstimo</button>
-            <br>
-            <button class="btn btn-primary btn-option">Funcionários</button>
-            <br>
-            <button class="btn btn-primary btn-option">Livro</button>
-        </form>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Ações</th>
+          
+        </thead>
+        <tbody>
+
+        <?php foreach(AutorRepository::listAll() as $autor ){ 
+            ?>
+
+        <tr>
+            <td><?php echo $autor->getId(); ?></td>
+            <td><?php echo $autor->getNome(); ?></td>
+            <td>
+                <a href="" class="btn btn-info">Editar</a>
+                <a href="" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+        <?php
+        }
+        ?>        
+        </tbody>
+      </table>
     </div>
+  </div>
+</body>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

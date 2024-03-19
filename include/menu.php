@@ -1,12 +1,3 @@
-<?php
-    include_once("include/factory.php");
-
-if(!Auth::isAuthenticated()){
-    header("location: login.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,6 +17,8 @@ if(!Auth::isAuthenticated()){
         .header {
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            margin-bottom: 30px;
             box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
         }
 
@@ -35,11 +28,6 @@ if(!Auth::isAuthenticated()){
             color: #FFD700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             text-align: center; /* Centraliza o título */
-        }
-
-        button a {
-            color: white;
-            text-decoration: none;
         }
 
         .header img {
@@ -90,7 +78,7 @@ if(!Auth::isAuthenticated()){
                             Autor
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <li><a class="dropdown-item" href="autor.listagem.php">Listagem de Autores</a></li>
+                            <li><a class="dropdown-item" href="#">Listagem de Autores</a></li>
                             <li><a class="dropdown-item" href="#">Adicionar Autor</a></li>
                         </ul>
                     </li>
@@ -100,7 +88,7 @@ if(!Auth::isAuthenticated()){
                             Cliente
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <li><a class="dropdown-item" href="cliente.listagem.php">Listagem de Clientes</a></li>
+                            <li><a class="dropdown-item" href="#">Listagem de Clientes</a></li>
                             <li><a class="dropdown-item" href="#">Adicionar Cliente</a></li>
                         </ul>
                     </li>
@@ -136,7 +124,7 @@ if(!Auth::isAuthenticated()){
                     </li>
                 </ul>
             </div>
-            <button class="btn btn-primary btn-danger"> <a href="logout.php">Sair</a></button>
+            <button class="btn btn-primary btn-sair">Sair</button>
         </div>
     </nav>
 
@@ -149,21 +137,17 @@ if(!Auth::isAuthenticated()){
     <div class="container">
         <form method="POST">
             <br>
-            <button class="btn btn-primary btn-option">Autor</button>
+            <button type="submit" class="btn btn-primary btn-option">Autor</button>
             <br>
-            <button class="btn btn-primary btn-option">Cliente</button>
+            <button type="submit" class="btn btn-primary btn-option">Cliente</button>
             <br>
-            <button class="btn btn-primary btn-option">Empréstimo</button>
+            <button type="submit" class="btn btn-primary btn-option">Empréstimo</button>
             <br>
-            <button class="btn btn-primary btn-option">Funcionários</button>
+            <button type="submit" class="btn btn-primary btn-option">Funcionários</button>
             <br>
-            <button class="btn btn-primary btn-option">Livro</button>
+            <button type="submit" class="btn btn-primary btn-option">Livro</button>
         </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+        integrity="
