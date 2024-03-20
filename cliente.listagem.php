@@ -41,6 +41,12 @@ if (!Auth::isAuthenticated()) {
             text-decoration: none;
         }
 
+        #button{
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+
         .header img {
             display: block;
             margin: 0 auto 20px;
@@ -88,6 +94,7 @@ if (!Auth::isAuthenticated()) {
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
+        <a class="navbar-brand" href="index.php">Home</a>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
@@ -146,6 +153,11 @@ if (!Auth::isAuthenticated()) {
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">
+        <br>
+    <div id="button">
+        <button class="btn btn-info"> Adicionar Cliente</button>
+    </div>
+    <br>
         <div class="table-responsive">
             <table class="table">
                 <thead>

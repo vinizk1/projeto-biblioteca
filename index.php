@@ -1,18 +1,10 @@
-<?php
-    include_once("include/factory.php");
-
-if(!Auth::isAuthenticated()){
-    header("location: login.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="fvicon.favicon" type="image/x-icon">
     <title>Página Inicial da Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -75,6 +67,18 @@ if(!Auth::isAuthenticated()){
 
         .btn-option {
             margin-bottom: 10px; /* Adiciona espaçamento entre os botões */
+        }
+
+        /* Estilo adicional para alinhar os botões horizontalmente */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-option {
+            margin: 5px; /* Espaçamento entre os botões */
         }
     </style>
 </head>
@@ -147,23 +151,21 @@ if(!Auth::isAuthenticated()){
     </div>
 
     <div class="container">
-        <form method="POST">
-            <br>
-            <button class="btn btn-primary btn-option">Autor</button>
-            <br>
-            <button class="btn btn-primary btn-option">Cliente</button>
-            <br>
-            <button class="btn btn-primary btn-option">Empréstimo</button>
-            <br>
-            <button class="btn btn-primary btn-option">Funcionários</button>
-            <br>
-            <button class="btn btn-primary btn-option">Livro</button>
-        </form>
-    </div>
+        <div class="button-container">
+            <form method="POST">
+            <form method="POST">
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="btn btn-primary btn-option"><a href="autor.listagem.php">Autor</a></button>
+    <button class="btn btn-primary btn-option"><a href="cliente.listagem.php">Cliente</a></button>
+    <button class="btn btn-primary btn-option">Empréstimo</button>
+    <button class="btn btn-primary btn-option"><a href="funcionarios.listagem.php">Funcionários</a></button>
+    <button class="btn btn-primary btn-option"><a href="livro.listagem.php">Livro</a></button>
+</form>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 </html>
