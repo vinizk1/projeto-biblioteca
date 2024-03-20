@@ -1,7 +1,7 @@
 <?php
-    include_once("include/factory.php");
+include_once("include/factory.php");
 
-if(!Auth::isAuthenticated()){
+if (!Auth::isAuthenticated()) {
     header("location: login.php");
     exit();
 }
@@ -13,8 +13,7 @@ if(!Auth::isAuthenticated()){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clientes da Biblioteca do Urubu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
         body {
             background-color: #4CAF50;
@@ -33,7 +32,8 @@ if(!Auth::isAuthenticated()){
             margin-bottom: 20px;
             color: #FFD700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            text-align: center; /* Centraliza o título */
+            text-align: center;
+            /* Centraliza o título */
         }
 
         button a {
@@ -43,7 +43,8 @@ if(!Auth::isAuthenticated()){
 
         .header img {
             display: block;
-            margin: 0 auto 20px; /* Centraliza a imagem */
+            margin: 0 auto 20px;
+            /* Centraliza a imagem */
             max-width: 200px;
             border-radius: 50%;
             border: 5px solid white;
@@ -51,8 +52,10 @@ if(!Auth::isAuthenticated()){
         }
 
         .navbar {
-            background-color: rgba(0, 0, 0, 0.6); /* Cor da barra de navegação */
-            margin-bottom: 0; /* Remove o espaçamento inferior da barra de navegação */
+            background-color: rgba(0, 0, 0, 0.6);
+            /* Cor da barra de navegação */
+            margin-bottom: 0;
+            /* Remove o espaçamento inferior da barra de navegação */
         }
 
         .navbar-nav .nav-link {
@@ -60,20 +63,24 @@ if(!Auth::isAuthenticated()){
         }
 
         .navbar-nav .nav-item {
-            margin-right: 10px; /* Espaçamento entre itens da navegação */
+            margin-right: 10px;
+            /* Espaçamento entre itens da navegação */
         }
 
         .navbar .btn-sair {
-            margin-left: auto; /* Empurra o botão 'Sair' para a direita */
+            margin-left: auto;
+            /* Empurra o botão 'Sair' para a direita */
         }
 
         .container {
             text-align: center;
-            margin-bottom: 20px; /* Adiciona espaçamento abaixo do container */
+            margin-bottom: 20px;
+            /* Adiciona espaçamento abaixo do container */
         }
 
         .btn-option {
-            margin-bottom: 10px; /* Adiciona espaçamento entre os botões */
+            margin-bottom: 10px;
+            /* Adiciona espaçamento entre os botões */
         }
     </style>
 </head>
@@ -84,8 +91,7 @@ if(!Auth::isAuthenticated()){
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Autor
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
@@ -94,8 +100,7 @@ if(!Auth::isAuthenticated()){
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Cliente
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
@@ -104,8 +109,7 @@ if(!Auth::isAuthenticated()){
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Empréstimo
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
@@ -114,8 +118,7 @@ if(!Auth::isAuthenticated()){
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Funcionários
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
@@ -124,8 +127,7 @@ if(!Auth::isAuthenticated()){
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Livro
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
@@ -141,44 +143,49 @@ if(!Auth::isAuthenticated()){
 
     <div class="header">
         <h1>Listagem de Clientes da Biblioteca do Urubu</h1>
-        <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg"
-            alt="Logo da Biblioteca">
+        <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Ações</th>
-          
-        </thead>
-        <tbody>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
 
-        <?php foreach(ClienteRepository::listAll() as $cliente ){ 
-            ?>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>CPF</th>
+                    <th>Data Nasc.</th>
+                    <th>Ações</th>>
 
-        <tr>
-            <td><?php echo $cliente->getId(); ?></td>
-            <td><?php echo $cliente->getNome(); ?></td>
-            <td>
-                <a href="" class="btn btn-info">Editar</a>
-                <a href="" class="btn btn-danger">Excluir</a>
-            </td>
-        </tr>
-        <?php
-        }
-        ?>        
-        </tbody>
-      </table>
+                </thead>
+                <tbody>
+
+                    <?php foreach (ClienteRepository::listAll() as $cliente) {
+                    ?>
+
+                        <tr>
+                            <td><?php echo $funcionario->getId(); ?></td>
+                            <td><?php echo $funcionario->getNome(); ?></td>
+                            <td><?php echo $funcionario->getTelefone(); ?></td>
+                            <td><?php echo $funcionario->getEmail(); ?></td>
+                            <td><?php echo $funcionario->getCpf(); ?></td>
+                            <td><?php echo $funcionario->getDataNascimento(); ?></td>
+                            <td>
+                                <a href="" class="btn btn-info">Editar</a>
+                                <a href="" class="btn btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </body>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 
 </html>

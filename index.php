@@ -120,7 +120,7 @@ if(!Auth::isAuthenticated()){
                             Funcionários
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                            <li><a class="dropdown-item" href="#">Listagem de Funcionários</a></li>
+                            <li><a class="dropdown-item" href="funcionarios.listagem.php">Listagem de Funcionários</a></li>
                             <li><a class="dropdown-item" href="#">Adicionar Funcionário</a></li>
                         </ul>
                     </li>
@@ -130,7 +130,7 @@ if(!Auth::isAuthenticated()){
                             Livro
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-                            <li><a class="dropdown-item" href="#">Listagem de Livros</a></li>
+                            <li><a class="dropdown-item" href="livro.listagem.php">Listagem de Livros</a></li>
                             <li><a class="dropdown-item" href="#">Adicionar Livro</a></li>
                         </ul>
                     </li>

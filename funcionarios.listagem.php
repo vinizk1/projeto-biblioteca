@@ -151,6 +151,9 @@ if(!Auth::isAuthenticated()){
           
             <th>ID</th>
             <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>CPF</th>
             <th>Ações</th>
           
         </thead>
@@ -162,6 +165,9 @@ if(!Auth::isAuthenticated()){
         <tr>
             <td><?php echo $funcionario->getId(); ?></td>
             <td><?php echo $funcionario->getNome(); ?></td>
+            <td><?php echo $funcionario->getTelefone(); ?></td>
+            <td><?php echo $funcionario->getEmail(); ?></td>
+            <td><?php echo $funcionario->getCpf(); ?></td>
             <td>
                 <a href="" class="btn btn-info">Editar</a>
                 <a href="" class="btn btn-danger">Excluir</a>

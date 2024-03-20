@@ -150,7 +150,11 @@ if(!Auth::isAuthenticated()){
         <thead>
           
             <th>ID</th>
-            <th>Nome</th>
+            <th>Titulo</th>
+            <th>Ano</th>
+            <th>Gênero</th>
+            <th>ISBN</th>
+            <th>Id do Autor</th>
             <th>Ações</th>
           
         </thead>
@@ -162,6 +166,10 @@ if(!Auth::isAuthenticated()){
         <tr>
             <td><?php echo $livro->getId(); ?></td>
             <td><?php echo $livro->getTitulo(); ?></td>
+            <td><?php echo $livro->getAno(); ?></td>
+            <td><?php echo $livro->getGenero(); ?></td>
+            <td><?php echo $livro->getIsbn(); ?></td>
+            <td><?php echo $livro->getAutorId(); ?></td>
             <td>
                 <a href="" class="btn btn-info">Editar</a>
                 <a href="" class="btn btn-danger">Excluir</a>
