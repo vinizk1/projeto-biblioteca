@@ -41,7 +41,7 @@ if (!Auth::isAuthenticated()) {
             text-decoration: none;
         }
 
-        #button{
+        #button {
             display: flex;
             align-items: center;
             justify-content: end;
@@ -92,83 +92,27 @@ if (!Auth::isAuthenticated()) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-        <a class="navbar-brand" href="index.php">Home</a>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Autor
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <li><a class="dropdown-item" href="autor.listagem.php">Listagem de Autores</a></li>
-                            <li><a class="dropdown-item" href="#">Adicionar Autor</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Cliente
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <li><a class="dropdown-item" href="cliente.listagem.php">Listagem de Clientes</a></li>
-                            <li><a class="dropdown-item" href="#">Adicionar Cliente</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Empréstimo
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <li><a class="dropdown-item" href="#">Listagem de Empréstimos</a></li>
-                            <li><a class="dropdown-item" href="#">Adicionar Empréstimo</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Funcionários
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                            <li><a class="dropdown-item" href="funcionarios.listagem.php">Listagem de Funcionários</a></li>
-                            <li><a class="dropdown-item" href="#">Adicionar Funcionário</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Livro
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-                            <li><a class="dropdown-item" href="livro.listagem.php">Listagem de Livros</a></li>
-                            <li><a class="dropdown-item" href="#">Adicionar Livro</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <button class="btn btn-primary btn-danger"> <a href="logout.php">Sair</a></button>
-        </div>
-    </nav>
-
+    <?php include("navbar.php") ?>
     <div class="header">
         <h1>Listagem de Clientes da Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">
         <br>
-    <div id="button">
-        <button class="btn btn-info"> Adicionar Cliente</button>
-    </div>
-    <br>
+        <div id="button">
+            <button class="btn btn-info"> Adicionar Cliente</button>
+        </div>
+        <br>
         <div class="table-responsive">
             <table class="table">
                 <thead>
-
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>Email</th>
                     <th>CPF</th>
                     <th>Data Nasc.</th>
-                    <th>Ações</th>>
+                    <th>Ações</th>
 
                 </thead>
                 <tbody>
@@ -177,12 +121,12 @@ if (!Auth::isAuthenticated()) {
                     ?>
 
                         <tr>
-                            <td><?php echo $funcionario->getId(); ?></td>
-                            <td><?php echo $funcionario->getNome(); ?></td>
-                            <td><?php echo $funcionario->getTelefone(); ?></td>
-                            <td><?php echo $funcionario->getEmail(); ?></td>
-                            <td><?php echo $funcionario->getCpf(); ?></td>
-                            <td><?php echo $funcionario->getDataNascimento(); ?></td>
+                            <td><?php echo $cliente->getId(); ?></td>
+                            <td><?php echo $cliente->getNome(); ?></td>
+                            <td><?php echo $cliente->getTelefone(); ?></td>
+                            <td><?php echo $cliente->getEmail(); ?></td>
+                            <td><?php echo $cliente->getCpf(); ?></td>
+                            <td><?php echo $cliente->getDataNascimento(); ?></td>
                             <td>
                                 <a href="" class="btn btn-info">Editar</a>
                                 <a href="" class="btn btn-danger">Excluir</a>

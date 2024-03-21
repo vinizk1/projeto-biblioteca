@@ -1,11 +1,18 @@
+<?php
+    include_once("include/factory.php");
+
+if(!Auth::isAuthenticated()){
+    header("location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="fvicon.favicon" type="image/x-icon">
-    <title>Página Inicial da Biblioteca do Urubu</title>
+    <title>Adicionar Autor na Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -32,6 +39,12 @@
         button a {
             color: white;
             text-decoration: none;
+        }
+
+        #button{
+            display: flex;
+            align-items: center;
+            justify-content: end;
         }
 
         .header img {
@@ -68,45 +81,36 @@
         .btn-option {
             margin-bottom: 10px; /* Adiciona espaçamento entre os botões */
         }
-
-        /* Estilo adicional para alinhar os botões horizontalmente */
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-option {
-            margin: 5px; /* Espaçamento entre os botões */
-        }
     </style>
 </head>
 
 <body>
-        <?php include("navbar.php") ?>
+<?php include("navbar.php") ?>
     <div class="header">
-        <h1>Página Inicial da Biblioteca do Urubu</h1>
+        <h1>Adicionar Autor na Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg"
             alt="Logo da Biblioteca">
     </div>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-3" style="text-align: center;">
+            <form action="autor.novo.post.php" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label" style="color: black;">Nome</label>
+                    <input type="text" name="nome" class="form-control" id="nome">
+                </div>
+                <div class="mb-3">  
+                    <a href="autor.listagem.php" class="btn btn-danger">Voltar</a>
+                    <button type="submit" class="btn btn-info">Enviar</button>
+                </div>
+            </form>
+        </div>
+    
+  </div>
+</body>
 
-    <div class="container">
-        <div class="button-container">
-            <form method="POST">
-            <form method="POST">
-    <br>
-    <br>
-    <br>
-    <br>
-    <button class="btn btn-primary btn-option"><a href="autor.listagem.php">Autor</a></button>
-    <button class="btn btn-primary btn-option"><a href="cliente.listagem.php">Cliente</a></button>
-    <button class="btn btn-primary btn-option">Empréstimo</button>
-    <button class="btn btn-primary btn-option"><a href="funcionarios.listagem.php">Funcionários</a></button>
-    <button class="btn btn-primary btn-option"><a href="livro.listagem.php">Livro</a></button>
-</form>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
