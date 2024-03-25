@@ -98,7 +98,7 @@ if (!Auth::isAuthenticated()) {
     <br>
     <div class="container">
     <div id="button">
-        <button class="btn btn-info"> Adicionar Livro</button>
+        <button class="btn btn-info"> <a href="livro.novo.php"> Adicionar Livro </a></button>
     </div>
     <br>
         <div class="table-responsive">

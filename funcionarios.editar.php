@@ -1,18 +1,37 @@
 <?php
-    include_once("include/factory.php");
+include_once("include/factory.php");
 
-if(!Auth::isAuthenticated()){
+if (!Auth::isAuthenticated()) {
     header("location: login.php");
     exit();
 }
+
+if(!isset($_GET["id"])){
+    header("location: funcionarios.listagem.php");
+    exit();
+}
+
+if($_GET["id"] == "" || $_GET["id"] == null){
+    header("location: funcionarios.listagem.php");
+    exit();
+}
+
+$funcionario = FuncionarioRepository::get($_GET["id"]);
+
+if(!$cliente){
+    header("location: funcionarios.listagem.php");
+    exit();
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Funcionarios da Biblioteca do Urubu</title>
+    <title>Editar Funcionarios na Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -87,50 +106,39 @@ if(!Auth::isAuthenticated()){
 <body>
 <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Funcionarios da Biblioteca do Urubu</h1>
+        <h1>Editar Funcionarios na Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg"
             alt="Logo da Biblioteca">
     </div>
-    <div class="container">
-        <br>
-    <div id="button">
-        <button class="btn btn-info"> <a href="funcionarios.novo.php"> Adicionar Funcionário </a></button>
-    </div>
-    <br>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>CPF</th>
-            <th>Ações</th>
-          
-        </thead>
-        <tbody>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-3" style="text-align: center;">
+            <form action="funcionarios.editar.post.php" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label" style="color: black;">Nome</label>
+                    <input type="text" name="nome" class="form-control" id="nome" value="<?php echo $funcionario->getNome(); ?>">
 
-        <?php foreach(FuncionarioRepository::listAll() as $funcionario){ 
-            ?>
+                    <label for="nome" class="form-label" style="color: black;">CPF</label>
+                    <input type="text" name="cpf" class="form-control" id="cpf" value="<?php echo $cpf->getCpf(); ?>">
 
-        <tr>
-            <td><?php echo $funcionario->getId(); ?></td>
-            <td><?php echo $funcionario->getNome(); ?></td>
-            <td><?php echo $funcionario->getTelefone(); ?></td>
-            <td><?php echo $funcionario->getEmail(); ?></td>
-            <td><?php echo $funcionario->getCpf(); ?></td>
-            <td>
-                <a href="funcionarios.editar.php" class="btn btn-info">Editar</a>
-                <a href="" class="btn btn-danger">Excluir</a>
-            </td>
-        </tr>
-        <?php
-        }
-        ?>        
-        </tbody>
-      </table>
-    </div>
+                    <label for="nome" class="form-label" style="color: black;">Telefone</label>
+                    <input type="text" name="telefone" class="form-control" id="telefone" value="<?php echo $telefone->getTelefone(); ?>">
+
+                    <label for="nome" class="form-label" style="color: black;">Senha</label>
+                    <input type="text" name="senha" class="form-control" id="senha" value="<?php echo $rg->getSenha(); ?>">
+
+                    <label for="nome" class="form-label" style="color: black;">Email</label>
+                    <input type="text" name="email" class="form-control" id="email" value="<?php echo $email->getEmail(); ?>">
+
+                </div>
+                <div class="mb-3">  
+                    <input type="hidden" name="id" value="<?php echo $funcionario->getId(); ?>">
+                    <a href="funcionarios.novo.php" class="btn btn-danger">Novo</a>
+                    <a href="funcionarios.listagem.php" class="btn btn-danger">Voltar</a>
+                    <button type="submit" class="btn btn-info">Enviar</button>
+                </div>
+            </form>
+        </div>
+    
   </div>
 </body>
 

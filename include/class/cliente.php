@@ -66,7 +66,7 @@ class Cliente{
         return $this->data_inclusao;
     }
     public function setDataInclusao($data_inclusao){
-        $this->id = $data_inclusao;
+        $this->data_inclusao = $data_inclusao;
     }
 
     public function getDataAlteracao(){
@@ -80,7 +80,7 @@ class Cliente{
         return $this->inclusao_funcionario_id;
     }
     public function setInclusaoFuncionarioId($inclusao_funcionario_id){
-        $this->id = $inclusao_funcionario_id;
+        $this->inclusao_funcionario_id = $inclusao_funcionario_id;
     }
     
     public function getAlteracaoFuncionarioId(){

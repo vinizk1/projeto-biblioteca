@@ -1,18 +1,37 @@
 <?php
-    include_once("include/factory.php");
+include_once("include/factory.php");
 
-if(!Auth::isAuthenticated()){
+if (!Auth::isAuthenticated()) {
     header("location: login.php");
     exit();
 }
+
+if(!isset($_GET["id"])){
+    header("location: livro.listagem.php");
+    exit();
+}
+
+if($_GET["id"] == "" || $_GET["id"] == null){
+    header("location: livro.listagem.php");
+    exit();
+}
+
+$livro = LivroRepository::get($_GET["id"]);
+
+if(!$livro){
+    header("location: livro.listagem.php");
+    exit();
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Funcionarios da Biblioteca do Urubu</title>
+    <title>Editar Livro na Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -87,50 +106,39 @@ if(!Auth::isAuthenticated()){
 <body>
 <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Funcionarios da Biblioteca do Urubu</h1>
+        <h1>Editar Livro na Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg"
             alt="Logo da Biblioteca">
     </div>
-    <div class="container">
-        <br>
-    <div id="button">
-        <button class="btn btn-info"> <a href="funcionarios.novo.php"> Adicionar Funcionário </a></button>
-    </div>
-    <br>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>CPF</th>
-            <th>Ações</th>
-          
-        </thead>
-        <tbody>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-3" style="text-align: center;">
+            <form action="cliente.editar.post.php" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label" style="color: black;">Titulo</label>
+                    <input type="text" name="titulo" class="form-control" id="titulo" value="<?php echo $livro->getTitulo(); ?>">
 
-        <?php foreach(FuncionarioRepository::listAll() as $funcionario){ 
-            ?>
+                    <label for="nome" class="form-label" style="color: black;">Ano</label>
+                    <input type="text" name="ano" class="form-control" id="ano" value="<?php echo $livro->getAno(); ?>">
 
-        <tr>
-            <td><?php echo $funcionario->getId(); ?></td>
-            <td><?php echo $funcionario->getNome(); ?></td>
-            <td><?php echo $funcionario->getTelefone(); ?></td>
-            <td><?php echo $funcionario->getEmail(); ?></td>
-            <td><?php echo $funcionario->getCpf(); ?></td>
-            <td>
-                <a href="funcionarios.editar.php" class="btn btn-info">Editar</a>
-                <a href="" class="btn btn-danger">Excluir</a>
-            </td>
-        </tr>
-        <?php
-        }
-        ?>        
-        </tbody>
-      </table>
-    </div>
+                    <label for="nome" class="form-label" style="color: black;">Gênero</label>
+                    <input type="text" name="genero" class="form-control" id="genero" value="<?php echo $livro->getGenero(); ?>">
+
+                    <label for="nome" class="form-label" style="color: black;">ISBN</label>
+                    <input type="text" name="isbn" class="form-control" id="isbn" value="<?php echo $livro->getIsbn(); ?>">
+
+                    <label for="nome" class="form-label" style="color: black;">Id do Autor</label>
+                    <input type="text" name="autor_id" class="form-control" id="autor_id" value="<?php echo $livro->getAutorId(); ?>">
+
+                </div>
+                <div class="mb-3">  
+                    <input type="hidden" name="id" value="<?php echo $livro->getId(); ?>">
+                    <a href="livro.novo.php" class="btn btn-danger">Novo</a>
+                    <a href="livro.listagem.php" class="btn btn-danger">Voltar</a>
+                    <button type="submit" class="btn btn-info">Enviar</button>
+                </div>
+            </form>
+        </div>
+    
   </div>
 </body>
 

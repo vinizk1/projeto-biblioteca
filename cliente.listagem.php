@@ -100,7 +100,7 @@ if (!Auth::isAuthenticated()) {
     <div class="container">
         <br>
         <div id="button">
-            <button class="btn btn-info"> Adicionar Cliente</button>
+        <button class="btn btn-info"> <a href="cliente.novo.php"> Adicionar Cliente</a></button>
         </div>
         <br>
         <div class="table-responsive">
@@ -128,8 +128,8 @@ if (!Auth::isAuthenticated()) {
                             <td><?php echo $cliente->getCpf(); ?></td>
                             <td><?php echo $cliente->getDataNascimento(); ?></td>
                             <td>
-                                <a href="" class="btn btn-info">Editar</a>
-                                <a href="" class="btn btn-danger">Excluir</a>
+                                <a href="cliente.editar.php?id=<?php echo $cliente->getId(); ?>" class="btn btn-info">Editar</a>
+                                <a href="#" class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
                     <?php
