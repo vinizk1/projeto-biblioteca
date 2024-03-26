@@ -116,7 +116,9 @@ if(!Auth::isAuthenticated()){
             <td><?php echo $autor->getNome(); ?></td>
             <td>
                 <a href="autor.editar.php?id=<?php echo $autor->getId(); ?>" class="btn btn-info">Editar</a>
-                <a href="" class="btn btn-danger">Excluir</a>
+                <?php if(LivroRepository::countByAutor($autor->getId()) == 0) { ?>
+                <a href="autor.excluir.php?id=<?php echo $autor->getId(); ?>" class="btn btn-danger">Excluir</a>
+                <?php } ?>
             </td>
         </tr>
         <?php

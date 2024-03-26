@@ -95,19 +95,19 @@ if(!Auth::isAuthenticated()){
         <div class="col-md-6 offset-3" style="text-align: center;">
             <form action="livro.novo.post.php" method="POST">
                 <div class="mb-3">
-                    <label for="nome" class="form-label" style="color: black;">Titulo</label>
+                    <label for="titulo" class="form-label" style="color: black;">Titulo</label>
                     <input type="text" name="titulo" class="form-control" id="titulo">
 
-                    <label for="nome" class="form-label" style="color: black;">Ano</label>
+                    <label for="ano" class="form-label" style="color: black;">Ano</label>
                     <input type="text" name="ano" class="form-control" id="ano">
 
-                    <label for="nome" class="form-label" style="color: black;">Gênero</label>
+                    <label for="genero" class="form-label" style="color: black;">Gênero</label>
                     <input type="text" name="genero" class="form-control" id="genero">
 
-                    <label for="nome" class="form-label" style="color: black;">ISBN</label>
+                    <label for="isbn" class="form-label" style="color: black;">ISBN</label>
                     <input type="text" name="isbn" class="form-control" id="isbn">
 
-                    <label for="nome" class="form-label" style="color: black;">Id do Autor</label>
+                    <label for="autor_id" class="form-label" style="color: black;">Id do Autor</label>
                     <input type="text" name="autor_id" class="form-control" id="autor_id">
                 </div>
                 <div class="mb-3">  

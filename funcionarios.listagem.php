@@ -94,7 +94,7 @@ if(!Auth::isAuthenticated()){
     <div class="container">
         <br>
     <div id="button">
-        <button class="btn btn-info"> <a href="funcionarios.novo.php"> Adicionar Funcionário </a></button>
+        <a href="funcionarios.novo.php" class="btn btn-info"> Adicionar Funcionário </a>
     </div>
     <br>
     <div class="table-responsive">
@@ -121,8 +121,8 @@ if(!Auth::isAuthenticated()){
             <td><?php echo $funcionario->getEmail(); ?></td>
             <td><?php echo $funcionario->getCpf(); ?></td>
             <td>
-                <a href="funcionarios.editar.php" class="btn btn-info">Editar</a>
-                <a href="" class="btn btn-danger">Excluir</a>
+                <a href="funcionarios.editar.php?id=<?php echo $funcionario->getId(); ?>" class="btn btn-info">Editar</a>
+                <a href="funcionarios.excluir.php?id=<?php echo $funcionario->getId(); ?>" class="btn btn-danger">Excluir</a>
             </td>
         </tr>
         <?php

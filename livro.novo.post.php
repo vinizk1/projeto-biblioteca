@@ -6,15 +6,17 @@ if (!Auth::isAuthenticated()) {
     exit();
 }
 
-
 $user = Auth::getUser();
 
-if(!isset($_POST["nome"])){
-    header("location: livro.novo.php?1");
+if (!isset($_POST["titulo"])){
+    header("location: livro_novo.php?1");
+
     exit();
 }
-if($_POST["nome"] == "" || $_POST["nome"] == null){
-    header("location: livro.novo.php?2");
+
+if( $_POST["titulo"] == "" || $_POST ["titulo"] == null){
+    header("location: livro_novo.php?2");
+    
     exit();
 }
 
@@ -30,10 +32,11 @@ $livro->setDataInclusao(date("Y-m-d H:i:s"));
 
 $livro_retorno = LivroRepository::insert($livro);
 
-if ($livro_retorno > 0){
-    header("location: livro_editar.php?id=".$livro_retorno);
+if($livro_retorno > 0){
+    header("location: livro_editar.php?id=". $livro_retorno);
     exit();
 }
 
-header("location: livro.novo.php?3");
+header("location: livro_novo.php");
+
 ?>

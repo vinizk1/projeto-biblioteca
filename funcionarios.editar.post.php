@@ -27,12 +27,14 @@ if (!$funcionario) {
 
 
 if (!isset($_POST["nome"])){
-    header("location: funcionarios.editar.php?id=".$funcionario->getId());
+    header("location: funcionario_editar.php?id=".$funcionario->getId());
+
     exit();
 }
 
 if( $_POST["nome"] == "" || $_POST ["nome"] == null){
     header("location: funcionarios.editar.php");
+    
     exit();
 }
 
@@ -47,4 +49,6 @@ $funcionario->setDataAlteracao(date("Y-m-d H:i:s"));
 
 FuncionarioRepository::update($funcionario);
 
-header("location: funcionarios.editar.php?id=".$funcionario->getId());
+header("location: funcionarios.editar.php?id".$funcionario->getId());
+
+?>

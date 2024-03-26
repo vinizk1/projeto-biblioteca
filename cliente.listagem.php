@@ -129,7 +129,9 @@ if (!Auth::isAuthenticated()) {
                             <td><?php echo $cliente->getDataNascimento(); ?></td>
                             <td>
                                 <a href="cliente.editar.php?id=<?php echo $cliente->getId(); ?>" class="btn btn-info">Editar</a>
-                                <a href="#" class="btn btn-danger">Excluir</a>
+                                <?php if(EmprestimoRepository::countByCliente($cliente->getId()) == 0) { ?>
+                                <a href="cliente.excluir.php?id=<?php echo $cliente->getId(); ?>" class="btn btn-danger">Excluir</a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php

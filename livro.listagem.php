@@ -127,8 +127,8 @@ if (!Auth::isAuthenticated()) {
                             <td><?php echo $livro->getIsbn(); ?></td>
                             <td><?php echo $livro->getAutorId(); ?></td>
                             <td>
-                                <a href="" class="btn btn-info">Editar</a>
-                                <a href="" class="btn btn-danger">Excluir</a>
+                                <a href="livro.editar.php?id=<?php echo $livro->getId(); ?>" class="btn btn-info">Editar</a>
+                                <a href="livro.excluir.php?id=<?php echo $livro->getId(); ?>" class="btn btn-danger">Excluir</a>
                             </td>
                         </tr>
                     <?php

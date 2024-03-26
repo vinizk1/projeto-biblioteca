@@ -64,8 +64,8 @@ class Livro{
         return $this->data_inclusao;
     }
 
-    public function setDataInclusao($data_alteracao){
-        $this->data_alteracao = $data_alteracao;
+    public function setDataInclusao($data_inclusao){
+        $this->data_inclusao = $data_inclusao;
     }
 
     public function getDataAlteracao(){

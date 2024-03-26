@@ -6,24 +6,25 @@ if (!Auth::isAuthenticated()) {
     exit();
 }
 
-if(!isset($_GET["id"])){
+if (!isset($_GET["id"])) {
     header("location: funcionarios.listagem.php");
     exit();
 }
 
-if($_GET["id"] == "" || $_GET["id"] == null){
+if ($_GET["id"] == "" || $_GET["id"] == null) {
     header("location: funcionarios.listagem.php");
     exit();
 }
 
 $funcionario = FuncionarioRepository::get($_GET["id"]);
 
-if(!$cliente){
+if (!$funcionario) {
     header("location: funcionarios.listagem.php");
     exit();
 }
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -117,17 +118,17 @@ if(!$cliente){
                     <label for="nome" class="form-label" style="color: black;">Nome</label>
                     <input type="text" name="nome" class="form-control" id="nome" value="<?php echo $funcionario->getNome(); ?>">
 
-                    <label for="nome" class="form-label" style="color: black;">CPF</label>
-                    <input type="text" name="cpf" class="form-control" id="cpf" value="<?php echo $cpf->getCpf(); ?>">
+                    <label for="cpf" class="form-label" style="color: black;">CPF</label>
+                    <input type="text" name="cpf" class="form-control" id="cpf" value="<?php echo $funcionario->getCpf(); ?>">
 
                     <label for="nome" class="form-label" style="color: black;">Telefone</label>
-                    <input type="text" name="telefone" class="form-control" id="telefone" value="<?php echo $telefone->getTelefone(); ?>">
+                    <input type="text" name="telefone" class="form-control" id="telefone" value="<?php echo $funcionario->getTelefone(); ?>">
 
                     <label for="nome" class="form-label" style="color: black;">Senha</label>
-                    <input type="text" name="senha" class="form-control" id="senha" value="<?php echo $rg->getSenha(); ?>">
+                    <input type="text" name="senha" class="form-control" id="senha" value="<?php echo $funcionario->getSenha(); ?>">
 
                     <label for="nome" class="form-label" style="color: black;">Email</label>
-                    <input type="text" name="email" class="form-control" id="email" value="<?php echo $email->getEmail(); ?>">
+                    <input type="text" name="email" class="form-control" id="email" value="<?php echo $funcionario->getEmail(); ?>">
 
                 </div>
                 <div class="mb-3">  

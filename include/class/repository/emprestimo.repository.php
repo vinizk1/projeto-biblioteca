@@ -105,4 +105,18 @@ class EmprestimoRepository implements repository
         $query->execute();
     }
 
+    public static function countByCliente($cliente_id){
+        $db = DB::getInstance();
+
+        $sql = "SELECT count(*) FROM emprestimo WHERE cliente_id = :cliente_id";
+
+        $query = $db->prepare($sql);
+        $query->bindValue(":cliente_id",$cliente_id);
+        $query->execute();
+
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        return $row["count(*)"];
+
+    }
 }
+

@@ -60,7 +60,7 @@ class LivroRepository implements repository
     public static function insert($obj){
         $db = DB::getInstance();
 
-        $sql = "INSERT INTO livro (titulo, ano, genero, isbn, autor_id, data_inclusao, inclusao_funcionario_id) VALUES(:titulo,:ano, :genero, :isbn, :autor_id:data_inclusao,:inclusao_funcionario_id)";
+        $sql = "INSERT INTO livro (titulo, ano, genero, isbn, autor_id, data_inclusao, inclusao_funcionario_id) VALUES(:titulo,:ano, :genero, :isbn, :autor_id, :data_inclusao,:inclusao_funcionario_id)";
 
         $query = $db->prepare($sql);
 
@@ -101,4 +101,17 @@ class LivroRepository implements repository
         $query->execute();
     }
 
+    public static function countByAutor($autor_id){
+        $db = DB::getInstance();
+
+        $sql = "SELECT count(*) FROM livro WHERE autor_id = :autor_id";
+
+        $query = $db->prepare($sql);
+        $query->bindValue(":autor_id",$autor_id);
+        $query->execute();
+
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        return $row["count(*)"];
+
+    }
 }
