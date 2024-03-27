@@ -12,7 +12,7 @@ if(!Auth::isAuthenticated()){
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Funcionarios da Biblioteca do Urubu</title>
+    <title>Adicionar Autor na Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -87,53 +87,28 @@ if(!Auth::isAuthenticated()){
 <body>
 <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Funcionarios da Biblioteca do Urubu</h1>
+        <h1>Alterar Senha na Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg"
             alt="Logo da Biblioteca">
     </div>
-    <div class="container">
-        <br>
-    <div id="button">
-        <a href="funcionarios.novo.php" class="btn btn-info"> Adicionar Funcionário </a>
-    </div>
-    <br>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Email</th>
-            <th>CPF</th>
-            <th>Ações</th>
-          
-        </thead>
-        <tbody>
+    <div class="row mt-4">
+        <div class="col-md-6 offset-3" style="text-align: center;">
+            <form action="" method="POST">
+                <div class="mb-3">
+                    <label for="nome" class="form-label" style="color: black;">Digite a Nova Senha</label>
+                    <input type="text" name="nome" class="form-control" id="senha">
 
-        <?php foreach(FuncionarioRepository::listAll() as $funcionario){ 
-            ?>
+                    <label for="nome" class="form-label" style="color: black;">Confime a nova Senha</label>
+                    <input type="text" name="confirmar_senha" class="form-control" id="confirmar_senha">
 
-        <tr>
-            <td><?php echo $funcionario->getId(); ?></td>
-            <td><?php echo $funcionario->getNome(); ?></td>
-            <td><?php echo $funcionario->getTelefone(); ?></td>
-            <td><?php echo $funcionario->getEmail(); ?></td>
-            <td><?php echo $funcionario->getCpf(); ?></td>
-            <td>
-                <a href="funcionarios.editar.php?id=<?php echo $funcionario->getId(); ?>" class="btn btn-info">Editar</a>
-                <?php if(EmprestimoRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && EmprestimoRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0 && EmprestimoRepository::countByDevolucaoFuncionario($funcionario->getId()) == 0 && EmprestimoRepository::countByRenovacaoFuncionario($funcionario->getId()) == 0 && ClienteRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && ClienteRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0 && AutorRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && AutorRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0 && LivroRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && LivroRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0){ ?>
-                <a href="funcionarios.excluir.php?id=<?php echo $funcionario->getId(); ?>" class="btn btn-danger">Excluir</a>
-                <?php }?>
+                    <br>
 
-            </td>
-        </tr>
-        <?php
-        }
-        ?>        
-        </tbody>
-      </table>
-    </div>
+                    <a href="funcionarios.listagem.php" class="btn btn-danger">Cancelar</a>
+                    <button class="btn btn-info">Confirmar</button>
+                    
+            </form>
+        </div>
+    
   </div>
 </body>
 

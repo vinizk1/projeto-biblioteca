@@ -107,8 +107,18 @@ if(!Auth::isAuthenticated()){
                     <label for="isbn" class="form-label" style="color: black;">ISBN</label>
                     <input type="text" name="isbn" class="form-control" id="isbn">
 
-                    <label for="autor_id" class="form-label" style="color: black;">Id do Autor</label>
-                    <input type="text" name="autor_id" class="form-control" id="autor_id">
+                    <br>
+                    
+                    <label for="autor" class="form-label">Autor:</label>
+                        <select name="autor" id="autor">
+                            <?php
+                            foreach (AutorRepository::listAll() as $autor) {
+                            ?>
+                                <option value="<?php echo $autor->getId(); ?>">
+                                    <?php echo $autor->getNome() ?>
+                                </option>
+                            <?php } ?>
+                        </select>
                 </div>
                 <div class="mb-3">  
                     <a href="livro.listagem.php" class="btn btn-danger">Voltar</a>

@@ -25,10 +25,10 @@ if (!$livro) {
     exit();
 }
 
-/*if(LivroRepository::countByAutor($autor->getID())){
-    header("location: autor.listagem.php");
+if(EmprestimoRepository::countByLivro($livro->getID())){
+    header("location: livro.listagem.php");
     exit();
-}*/
+}
 
 LivroRepository::delete($livro->getId());
 

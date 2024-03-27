@@ -124,11 +124,12 @@ if (!$funcionario) {
                     <label for="nome" class="form-label" style="color: black;">Telefone</label>
                     <input type="text" name="telefone" class="form-control" id="telefone" value="<?php echo $funcionario->getTelefone(); ?>">
 
-                    <label for="nome" class="form-label" style="color: black;">Senha</label>
-                    <input type="text" name="senha" class="form-control" id="senha" value="<?php echo $funcionario->getSenha(); ?>">
-
                     <label for="nome" class="form-label" style="color: black;">Email</label>
                     <input type="text" name="email" class="form-control" id="email" value="<?php echo $funcionario->getEmail(); ?>">
+
+                    <br>
+                    
+                    <a href="alterar.senha.php" class="btn btn-info">Alterar Senha</a>
 
                 </div>
                 <div class="mb-3">  
