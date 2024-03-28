@@ -113,10 +113,14 @@ class FuncionarioRepository implements Repository{
     public static function update ($obj){
         $db = DB::getInstance();
 
-        $sql = "UPDATE funcionario SET nome = :nome, data_alteracao = :data_alteracao, alteracao_funcionario_id = :alteracao_funcionario_id Where id = :id";
+        $sql = "UPDATE funcionario SET nome = :nome, telefone = :telefone, email = :email, cpf = :cpf, senha = :senha, data_alteracao = :data_alteracao, alteracao_funcionario_id = :alteracao_funcionario_id Where id = :id";
 
         $query = $db->prepare($sql);
         $query->bindValue(":nome",$obj->getNome());
+        $query->bindValue(":telefone",$obj->getTelefone());
+        $query->bindValue(":email",$obj->getEmail());
+        $query->bindValue(":cpf",$obj->getCpf());
+        $query->bindValue(":senha",$obj->getSenha());
         $query->bindValue(":data_alteracao",$obj->getDataAlteracao());
         $query->bindValue(":alteracao_funcionario_id",$obj->getAlteracaoFuncionarioId());
         $query->bindValue(":id",$obj->getId());

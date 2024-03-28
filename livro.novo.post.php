@@ -26,7 +26,7 @@ $livro->setTitulo($_POST["titulo"]);
 $livro->setAno($_POST["ano"]);
 $livro->setGenero($_POST["genero"]);
 $livro->setIsbn($_POST["isbn"]);
-$livro->setAutorId($_POST["autor_id"]);
+$livro->setAutorId($_POST["autor"]);
 $livro->setInclusaoFuncionarioId($user->getId());
 $livro->setDataInclusao(date("Y-m-d H:i:s"));
 

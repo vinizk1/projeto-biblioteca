@@ -27,7 +27,7 @@
                             Empréstimo
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <li><a class="dropdown-item" href="#">Listagem de Empréstimos</a></li>
+                            <li><a class="dropdown-item" href="emprestimo.listagem.php">Listagem de Empréstimos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">

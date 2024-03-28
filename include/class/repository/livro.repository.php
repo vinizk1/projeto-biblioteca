@@ -82,10 +82,14 @@ class LivroRepository implements repository
     public static function update($obj){
         $db = DB::getInstance();
 
-        $sql = "UPDATE autor SET titulo = :titulo, data_alteracao = :data_alteracao, alteracao_funcionario_id = :alteracao_funcionario_id Where id = :id";
+        $sql = "UPDATE livro SET titulo = :titulo, ano = :ano, genero = :genero, isbn = :isbn, autor_id = :autor_id, data_alteracao = :data_alteracao, alteracao_funcionario_id = :alteracao_funcionario_id Where id = :id";
 
         $query = $db->prepare($sql);
-        $query->bindValue(":nome",$obj->getNome());
+        $query->bindValue(":titulo",$obj->getTitulo());
+        $query->bindValue(":ano",$obj->getAno());
+        $query->bindValue(":genero",$obj->getGenero());
+        $query->bindValue(":isbn",$obj->getIsbn());
+        $query->bindValue(":autor_id",$obj->getAutorId());
         $query->bindValue(":data_alteracao",$obj->getDataAlteracao());
         $query->bindValue(":alteracao_funcionario_id",$obj->getAlteracaoFuncionarioId());
         $query->bindValue(":id",$obj->getId());

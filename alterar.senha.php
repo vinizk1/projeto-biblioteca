@@ -5,6 +5,23 @@ if(!Auth::isAuthenticated()){
     header("location: login.php");
     exit();
 }
+
+if (!isset($_GET["id"])) {
+    header("location: funcionarios.listagem.php");
+    exit();
+}
+
+if ($_GET["id"] == "" || $_GET["id"] == null) {
+    header("location: funcionarios.listagem.php");
+    exit();
+}
+
+$funcionario = FuncionarioRepository::get($_GET["id"]);
+
+if (!$funcionario) {
+    header("location: funcionarios.listagem.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -93,19 +110,21 @@ if(!Auth::isAuthenticated()){
     </div>
     <div class="row mt-4">
         <div class="col-md-6 offset-3" style="text-align: center;">
-            <form action="" method="POST">
+            <form action="alterar.senha.post.php" method="POST">
                 <div class="mb-3">
-                    <label for="nome" class="form-label" style="color: black;">Digite a Nova Senha</label>
-                    <input type="text" name="nome" class="form-control" id="senha">
+                    <label for="senha" class="form-label" style="color: black;">Digite a Nova Senha</label>
+                    <input type="text" name="senha" class="form-control" id="senha">
 
-                    <label for="nome" class="form-label" style="color: black;">Confime a nova Senha</label>
+                    <label for="confirmar_senha" class="form-label" style="color: black;">Confime a nova Senha</label>
                     <input type="text" name="confirmar_senha" class="form-control" id="confirmar_senha">
 
                     <br>
 
                     <a href="funcionarios.listagem.php" class="btn btn-danger">Cancelar</a>
-                    <button class="btn btn-info">Confirmar</button>
-                    
+
+                    <input type="hidden" name="id" value="<?php echo $funcionario->getId(); ?>">
+                    <button type="submit" class="btn btn-info">Confirmar</button>
+
             </form>
         </div>
     

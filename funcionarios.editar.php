@@ -128,8 +128,8 @@ if (!$funcionario) {
                     <input type="text" name="email" class="form-control" id="email" value="<?php echo $funcionario->getEmail(); ?>">
 
                     <br>
-                    
-                    <a href="alterar.senha.php" class="btn btn-info">Alterar Senha</a>
+        
+                    <a href="alterar.senha.php?id=<?php echo $funcionario->getId(); ?>" class="btn btn-info">Alterar Senha</a>
 
                 </div>
                 <div class="mb-3">  

@@ -112,7 +112,7 @@ if(!$livro){
     </div>
     <div class="row mt-4">
         <div class="col-md-6 offset-3" style="text-align: center;">
-            <form action="cliente.editar.post.php" method="POST">
+            <form action="livro.editar.post.php" method="POST">
                 <div class="mb-3">
                     <label for="nome" class="form-label" style="color: black;">Titulo</label>
                     <input type="text" name="titulo" class="form-control" id="titulo" value="<?php echo $livro->getTitulo(); ?>">
@@ -126,8 +126,18 @@ if(!$livro){
                     <label for="nome" class="form-label" style="color: black;">ISBN</label>
                     <input type="text" name="isbn" class="form-control" id="isbn" value="<?php echo $livro->getIsbn(); ?>">
 
-                    <label for="nome" class="form-label" style="color: black;">Id do Autor</label>
-                    <input type="text" name="autor_id" class="form-control" id="autor_id" value="<?php echo $livro->getAutorId(); ?>">
+                    <br>
+                    
+                    <label for="autor" class="form-label">Autor:</label>
+                        <select name="autor" id="autor">
+                            <?php
+                            foreach (AutorRepository::listAll() as $autor) {
+                            ?>
+                                <option value="<?php echo $autor->getId(); ?>">
+                                    <?php echo $autor->getNome() ?>
+                                </option>
+                            <?php } ?>
+                        </select>
 
                 </div>
                 <div class="mb-3">  

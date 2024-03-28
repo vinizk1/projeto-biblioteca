@@ -38,7 +38,8 @@ class Emprestimo{
         $this->cliente_id = $cliente_id;
     }
 
-    public function getDataVencimento(){
+    public function getDataVencimento($format = "Y-m-d"){
+        $datetime = DateTime::createFromFormat("Y-m-d",$this->data_vencimento);
         return $this->data_vencimento;
     }
 
@@ -46,8 +47,13 @@ class Emprestimo{
         $this->data_vencimento = $data_vencimento;
     }
 
-    public function getDataInclusao(){
-        return $this->data_inclusao;
+    public function getDataInclusao($format = "Y-m-d"){
+        $datetime = DateTime::createFromFormat("Y-m-d",$this->data_renovacao);
+
+        if($datetime){
+            return $datetime->format($format);
+        }
+        return null;
     }
 
     public function setDataInclusao($data_inclusao){
@@ -62,8 +68,13 @@ class Emprestimo{
         $this->data_alteracao = $data_alteracao;
     }
 
-    public function getDataRenovacao(){
-        return $this->data_renovacao;
+    public function getDataRenovacao($format = "Y-m-d"){
+        $datetime = DateTime::createFromFormat("Y-m-d",$this->data_renovacao);
+
+        if($datetime){
+            return $datetime->format($format);
+        }
+        return null;
     }
 
     public function setDataRenovacao($data_renovacao){

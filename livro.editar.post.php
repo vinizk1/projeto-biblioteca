@@ -26,12 +26,12 @@ if (!$livro) {
 }
 
 
-if (!isset($_POST["nome"])){
+if (!isset($_POST["titulo"])){
     header("location: livro.editar.php?id=".$livro->getId());
     exit();
 }
 
-if( $_POST["nome"] == "" || $_POST ["nome"] == null){
+if( $_POST["titulo"] == "" || $_POST ["titulo"] == null){
     header("location: livro.editar.php");
     exit();
 }
@@ -41,7 +41,7 @@ $livro->setTitulo($_POST["titulo"]);
 $livro->setAno($_POST["ano"]);
 $livro->setGenero($_POST["genero"]);
 $livro->setIsbn($_POST["isbn"]);
-$livro->setAutorId($_POST["autor_id"]);
+$livro->setAutorId($_POST["autor"]);
 $livro->setAlteracaoFuncionarioId($user->getId());
 $livro->setDataAlteracao(date("Y-m-d H:i:s"));
 

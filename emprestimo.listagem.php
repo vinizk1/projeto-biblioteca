@@ -12,7 +12,7 @@ if (!Auth::isAuthenticated()) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Funcionarios da Biblioteca do Urubu</title>
+    <title>Clientes da Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
         body {
@@ -94,13 +94,13 @@ if (!Auth::isAuthenticated()) {
 <body>
     <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Funcionarios da Biblioteca do Urubu</h1>
+        <h1>Listagem de Emprestimos da Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">
         <br>
         <div id="button">
-            <a href="funcionarios.novo.php" class="btn btn-info"> Adicionar Funcionário </a>
+            <button class="btn btn-info"> <a href="emprestimo.novo.php"> Adicionar Emprestimo</a></button>
         </div>
         <br>
         <div class="table-responsive">
@@ -108,35 +108,45 @@ if (!Auth::isAuthenticated()) {
                 <thead>
 
                     <th>ID</th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
-                    <th>CPF</th>
+                    <th>Livro</th>
+                    <th>Cliente</th>
+                    <th>Data Vencimento</th>
+                    <th>Data de Devolução</th>
                     <th>Ações</th>
 
                 </thead>
                 <tbody>
 
-                    <?php foreach (FuncionarioRepository::listAll() as $funcionario) {
+                    <?php
+                    foreach (EmprestimoRepository::listAll() as $emprestimo) {
                     ?>
 
                         <tr>
-                            <td><?php echo $funcionario->getId(); ?></td>
-                            <td><?php echo $funcionario->getNome(); ?></td>
-                            <td><?php echo $funcionario->getTelefone(); ?></td>
-                            <td><?php echo $funcionario->getEmail(); ?></td>
-                            <td><?php echo $funcionario->getCpf(); ?></td>
+                            <td><?php echo $emprestimo->getId(); ?></td>
                             <td>
-                                <a href="funcionarios.editar.php?id=<?php echo $funcionario->getId(); ?>" class="btn btn-info">Editar</a>
-                                <?php if (EmprestimoRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && EmprestimoRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0 && EmprestimoRepository::countByDevolucaoFuncionario($funcionario->getId()) == 0 && EmprestimoRepository::countByRenovacaoFuncionario($funcionario->getId()) == 0 && ClienteRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && ClienteRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0 && AutorRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && AutorRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0 && LivroRepository::countByInclusaoFuncionario($funcionario->getId()) == 0 && LivroRepository::countByAlteracaoFuncionario($funcionario->getId()) == 0) { ?>
-                                    <a href="funcionarios.excluir.php?id=<?php echo $funcionario->getId(); ?>" class="btn btn-danger">Excluir</a>
-                                <?php } ?>
+                                <?php $livro = LivroRepository::get($emprestimo->getLivroId());
+                                echo $emprestimo->getLivroId() . " - " . $livro->getTitulo(); ?>
+
+                            </td>
+
+                            <td><?php $cliente = ClienteRepository::get($emprestimo->getClienteId());
+                                echo $emprestimo->getClienteId() . " - " . $cliente->getNome(); ?>
+                            </td>
+                            <td><?php echo $emprestimo->getDataVencimento("d/m/Y"); ?> </td>
+                            <td><?php echo $emprestimo->getDataDevolucao(); ?> </td>
+
+                            <td>
+                                <a href="emprestimo.editar.php" class="btn btn-info">Editar</a>
+
+                                <a href="#" class="btn btn-danger">Deletar</a>
+
 
                             </td>
                         </tr>
                     <?php
                     }
                     ?>
+
                 </tbody>
             </table>
         </div>
