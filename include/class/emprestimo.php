@@ -47,13 +47,8 @@ class Emprestimo{
         $this->data_vencimento = $data_vencimento;
     }
 
-    public function getDataInclusao($format = "Y-m-d"){
-        $datetime = DateTime::createFromFormat("Y-m-d",$this->data_renovacao);
-
-        if($datetime){
-            return $datetime->format($format);
-        }
-        return null;
+    public function getDataInclusao(){
+        return $this->data_inclusao;
     }
 
     public function setDataInclusao($data_inclusao){
