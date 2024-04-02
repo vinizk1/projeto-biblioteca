@@ -16,26 +16,37 @@ include_once("class/repository/funcionario.repository.php");
 include_once("class/repository/livro.repository.php");
 include_once("class/auth.php");
 
-class Factory{
-    public static function db(){
+class Factory
+{
+    public static function db()
+    {
         return DB::getInstance();
     }
 
-    public static function funcionario(){
+    public static function funcionario()
+    {
         return new Funcionario();
     }
-    public static function autor(){
+    public static function autor()
+    {
         return new Autor();
     }
-    public static function cliente(){
+    public static function cliente()
+    {
         return new Cliente();
     }
-    public static function emprestimo(){
-        return new Emprestimo();
+    public static function emprestimo()
+    {
+        $emprestimo = new Emprestimo();
+
+        $datetime = new DateTime();
+        $datetime->add(new DateInterval("P7D"));
+
+        $emprestimo->setDataVencimento($datetime->format("Y-m-d"));
+        return $emprestimo;
     }
-    public static function livro(){
+    public static function livro()
+    {
         return new Livro();
     }
 }
-
-?>

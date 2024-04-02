@@ -13,7 +13,40 @@ if(!isset($_POST["nome"])){
     header("location: funcionarios.novo.php?1");
     exit();
 }
+if(!isset($_POST["cpf"])){
+    header("location: funcionarios.novo.php?1");
+    exit();
+}
+if(!isset($_POST["telefone"])){
+    header("location: funcionarios.novo.php?1");
+    exit();
+}
+if(!isset($_POST["senha"])){
+    header("location: funcionarios.novo.php?1");
+    exit();
+}
+if(!isset($_POST["email"])){
+    header("location: funcionarios.novo.php?1");
+    exit();
+}
+
 if($_POST["nome"] == "" || $_POST["nome"] == null){
+    header("location: funcionarios.novo.php?2");
+    exit();
+}
+if($_POST["cpf"] == "" || $_POST["cpf"] == null){
+    header("location: funcionarios.novo.php?2");
+    exit();
+}
+if($_POST["telefone"] == "" || $_POST["telefone"] == null){
+    header("location: funcionarios.novo.php?2");
+    exit();
+}
+if($_POST["senha"] == "" || $_POST["senha"] == null){
+    header("location: funcionarios.novo.php?2");
+    exit();
+}
+if($_POST["email"] == "" || $_POST["email"] == null){
     header("location: funcionarios.novo.php?2");
     exit();
 }

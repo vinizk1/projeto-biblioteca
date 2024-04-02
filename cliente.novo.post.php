@@ -13,7 +13,32 @@ if(!isset($_POST["nome"])){
     header("location: cliente.novo.php?1");
     exit();
 }
+if(!isset($_POST["telefone"])){
+    header("location: cliente.novo.php?1");
+    exit();
+}
+if(!isset($_POST["email"])){
+    header("location: cliente.novo.php?1");
+    exit();
+}
+if(!isset($_POST["data_nascimento"])){
+    header("location: cliente.novo.php?1");
+    exit();
+}
+
 if($_POST["nome"] == "" || $_POST["nome"] == null){
+    header("location: cliente.novo.php?2");
+    exit();
+}
+if($_POST["telefone"] == "" || $_POST["telefone"] == null){
+    header("location: cliente.novo.php?2");
+    exit();
+}
+if($_POST["email"] == "" || $_POST["email"] == null){
+    header("location: cliente.novo.php?2");
+    exit();
+}
+if($_POST["data_nascimento"] == "" || $_POST["data_nascimento"] == null){
     header("location: cliente.novo.php?2");
     exit();
 }

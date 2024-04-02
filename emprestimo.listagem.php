@@ -136,10 +136,14 @@ if (!Auth::isAuthenticated()) {
                             <td><?php echo $emprestimo->getDataDevolucao(); ?> </td>
 
                             <td>
-                                <a href="emprestimo.editar.php" class="btn btn-info">Editar</a>
-
-                                <a href="#" class="btn btn-danger">Deletar</a>
-
+                                <?php 
+                                if(
+                                $emprestimo->getDataRenovacao() == null &&
+                                $emprestimo->getDataRenovacao() == null &&
+                                $emprestimo->getDataAlteracao() == null
+                                ){?>
+                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-danger">Excluir</a>
+                                <?php } ?>
 
                             </td>
                         </tr>

@@ -9,13 +9,23 @@ if (!Auth::isAuthenticated()) {
 $user = Auth::getUser();
 
 if (!isset($_POST["titulo"])){
-    header("location: livro_novo.php?1");
+    header("location: livro.novo.php?1");
+
+    exit();
+}
+if (!isset($_POST["autor_id"])){
+    header("location: livro.novo.php?1");
 
     exit();
 }
 
 if( $_POST["titulo"] == "" || $_POST ["titulo"] == null){
-    header("location: livro_novo.php?2");
+    header("location: livro.novo.php?2");
+    
+    exit();
+}
+if( $_POST["autor_id"] == "" || $_POST ["autor_id"] == null){
+    header("location: livro.novo.php?2");
     
     exit();
 }
@@ -37,6 +47,6 @@ if($livro_retorno > 0){
     exit();
 }
 
-header("location: livro_novo.php");
+header("location: livro.novo.php");
 
 ?>
