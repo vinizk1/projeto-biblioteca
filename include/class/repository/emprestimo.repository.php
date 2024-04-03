@@ -208,6 +208,47 @@ class EmprestimoRepository implements Repository{
         $row = $query->fetch(PDO::FETCH_ASSOC);
         return $row["count(*)"];
     }
+
+    public static function countByDataRenovacao($emprestimo_id){ 
+        $db = DB::getInstance();
+
+        $sql = 'SELECT count(*) FROM emprestimo WHERE data_renovacao = :emprestimo_id'; 
+
+        $query = $db->prepare($sql);
+        $query->bindValue(":emprestimo_id",$emprestimo_id);
+        $query->execute();
+
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        return $row["count(*)"];
+    }
+
+    public static function countByDataDevolucao($emprestimo_id){ 
+        $db = DB::getInstance();
+
+        $sql = 'SELECT count(*) FROM emprestimo WHERE data_devolucao = :emprestimo_id'; 
+
+        $query = $db->prepare($sql);
+        $query->bindValue(":emprestimo_id",$emprestimo_id);
+        $query->execute();
+
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        return $row["count(*)"];
+    }
+
+    public static function countByDataAlteracao($emprestimo_id){ 
+        $db = DB::getInstance();
+
+        $sql = 'SELECT count(*) FROM emprestimo WHERE data_alteracao = :emprestimo_id'; 
+
+        $query = $db->prepare($sql);
+        $query->bindValue(":emprestimo_id",$emprestimo_id);
+        $query->execute();
+
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        return $row["count(*)"];
+    }
+    
+    
 }
 
 

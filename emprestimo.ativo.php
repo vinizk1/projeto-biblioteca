@@ -94,14 +94,13 @@ if (!Auth::isAuthenticated()) {
 <body>
     <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Emprestimos da Biblioteca do Urubu</h1>
+        <h1>Listagem de Emprestimos Ativos da Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">
         <br>
         <div id="button">
-            <button class="btn btn-info"> <a href="emprestimo.novo.php"> Adicionar Emprestimo</a></button>
-            <button class="btn btn-info"> <a href="emprestimo.ativo.php"> Ver Emprestimos Ativos</a></button>
+            <button class="btn btn-danger"> <a href="emprestimo.listagem.php">Voltar</a></button>
         </div>
         <br>
         <div class="table-responsive">
@@ -143,7 +142,7 @@ if (!Auth::isAuthenticated()) {
                                 $emprestimo->getDataRenovacao() == null &&
                                 $emprestimo->getDataAlteracao() == null
                                 ){?>
-                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-danger">Excluir</a>
+                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-success">Devolvido</a>
                                 <?php } ?>
 
                             </td>

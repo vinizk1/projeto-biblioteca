@@ -1,36 +1,41 @@
 <?php
-include_once("include/factory.php");
+include_once('include/factory.php');
 
 if (!Auth::isAuthenticated()) {
-    header("location: login.php");
+    header("Location: login.php");
     exit();
 }
 
 $user = Auth::getUser();
 
-if (!isset($_GET["id"])) {
-    header("location: funcionario.listagem.php");
+if(!isset($_GET['id'])){
+    header("location: emprestimo.listagem.php");
     exit();
 }
-
-if ($_GET["id"] == "" || $_GET["id"] == null) {
-    header("location: funcionario.listagem.php");
+if($_GET["id"] == "" || $_GET["id"] == null){
+    header("location: emprestimo.listagem.php");
     exit();
 }
-
 $emprestimo = EmprestimoRepository::get($_GET["id"]);
-
-if (!$emprestimo) {
+if(!$emprestimo){
     header("location: emprestimo.listagem.php");
     exit();
 }
 
-if(EmprestimoRepository::countByCliente($cliente->getID())){
-    header("location: cliente.listagem.php");
-    exit();
+if(EmprestimoRepository::countByDataDevolucao($_GET["id"]) > 0){
+    header("location: emprestimo.listagem.php");
+    exit(); 
+}
+if(EmprestimoRepository::countByDataRenovacao($_GET["id"]) > 0){
+    header("location: emprestimo.listagem.php");
+    exit(); 
+}
+if(EmprestimoRepository::countByDataAlteracao($_GET["id"]) > 0){
+    header("location: emprestimo.listagem.php");
+    exit(); 
 }
 
 
 EmprestimoRepository::delete($emprestimo->getId());
 
-header("location: emprestimo.listagem.php");
+header("Location: emprestimo.listagem.php");
