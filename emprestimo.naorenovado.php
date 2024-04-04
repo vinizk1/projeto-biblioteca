@@ -12,7 +12,7 @@ if (!Auth::isAuthenticated()) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Clientes da Biblioteca do Urubu</title>
+    <title>Emprestimo Biblioteca do Urubu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
         body {
@@ -94,14 +94,13 @@ if (!Auth::isAuthenticated()) {
 <body>
     <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Emprestimos da Biblioteca do Urubu</h1>
+        <h1>Listagem de Emprestimos Não Renovados da Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">
         <br>
         <div id="button">
-            <button class="btn btn-info"> <a href="emprestimo.novo.php"> Adicionar Emprestimo</a></button>
-            <button class="btn btn-info"> <a href="emprestimo.ativo.php"> Ver Emprestimos Ativos</a></button>
+            <button class="btn btn-danger"> <a href="emprestimo.listagem.php">Voltar</a></button>
         </div>
         <br>
         <div class="table-responsive">
@@ -119,7 +118,7 @@ if (!Auth::isAuthenticated()) {
                 <tbody>
 
                     <?php
-                    foreach (EmprestimoRepository::listAll() as $emprestimo) {
+                    foreach (EmprestimoRepository::listAllNotRenovated() as $emprestimo) {
                     ?>
 
                         <tr>
@@ -143,16 +142,7 @@ if (!Auth::isAuthenticated()) {
                                 $emprestimo->getDataRenovacao() == null &&
                                 $emprestimo->getDataAlteracao() == null
                                 ){?>
-                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-danger">Excluir</a>
-                                <?php } ?>
-
-                                <?php 
-                                if(
-                                $emprestimo->getDataVencimento("Y-m-d") >= date("Y-m-d") == null &&
-                                $emprestimo->getDataRenovacao() == null &&
-                                $emprestimo->getDataAlteracao() == null
-                                ){?>
-                                  <a href="emprestimo.renovar.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-warning">Renovar</a>
+                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-success">Devolvido</a>
                                 <?php } ?>
 
                             </td>

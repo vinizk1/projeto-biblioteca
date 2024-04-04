@@ -118,7 +118,7 @@ if (!Auth::isAuthenticated()) {
                 <tbody>
 
                     <?php
-                    foreach (EmprestimoRepository::listAll() as $emprestimo) {
+                    foreach (EmprestimoRepository::listAllRenovated() as $emprestimo) {
                     ?>
 
                         <tr>

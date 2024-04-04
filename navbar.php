@@ -30,6 +30,8 @@
 
                         <li><a class="dropdown-item" href="emprestimo.vencido.php">Listagem de Empréstimos Vencidos</a></li>
                         <li><a class="dropdown-item" href="emprestimo.renovado.php">Listagem de Empréstimos Renovados</a></li>
+                        <li><a class="dropdown-item" href="emprestimo.naorenovado.php">Listagem de Empréstimos Não Renovados</a></li>
+                        <li><a class="dropdown-item" href="emprestimo.devolvido.php">Listagem de Empréstimos Devolvidos</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">

@@ -31,6 +31,11 @@ if (!(
         exit();
     }
 
-EmprestimoRepository::delete($emprestimo->getId());
+$novo_emprestimo = Factory::emprestimo();
+
+$emprestimo->setDataVencimento($novo_emprestimo->getDataVencimento());
+
+
+EmprestimoRepository::update($emprestimo->getId());
 
 header("Location: emprestimo.listagem.php?5");
