@@ -13,19 +13,21 @@ if (!isset($_POST["titulo"])){
 
     exit();
 }
-if (!isset($_POST["autor_id"])){
-    header("location: livro.novo.php?1");
-
-    exit();
-}
 
 if( $_POST["titulo"] == "" || $_POST ["titulo"] == null){
     header("location: livro.novo.php?2");
     
     exit();
 }
-if( $_POST["autor_id"] == "" || $_POST ["autor_id"] == null){
-    header("location: livro.novo.php?2");
+
+if (!isset($_POST["autor"])){
+    header("location: funcionario.novo.php");
+
+    exit();
+}
+
+if( $_POST["autor"] == "" || $_POST ["autor"] == null){
+    header("location: funcionario.novo.php");
     
     exit();
 }
@@ -43,7 +45,7 @@ $livro->setDataInclusao(date("Y-m-d H:i:s"));
 $livro_retorno = LivroRepository::insert($livro);
 
 if($livro_retorno > 0){
-    header("location: livro_editar.php?id=". $livro_retorno);
+    header("location: livro.editar.php?id=". $livro_retorno);
     exit();
 }
 

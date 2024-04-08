@@ -142,7 +142,7 @@ if (!Auth::isAuthenticated()) {
                                 $emprestimo->getDataRenovacao() == null &&
                                 $emprestimo->getDataAlteracao() == null
                                 ){?>
-                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-success">Devolvido</a>
+                                  <a href="emprestimo.renovar.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-warning">Renovar</a>
                                 <?php } ?>
 
                             </td>

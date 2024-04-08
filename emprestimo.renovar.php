@@ -116,44 +116,26 @@ $emprestimo_novo = Factory::emprestimo();
     </div>
     <div class="row mt-4">
         <div class="col-md-6 offset-3" style="text-align: center;">
-            <form action="emprestimo.novo.post.php" method="POST">
+            <form action="emprestimo.efetuar.renovacao.php" method="POST">
                 <div class="mb-3">
                     <label for="livro_id" class="form-label" style="color: black;">Livro:</label>
                     <br>
-                    <select name="livro_id" id="livro_id">
-                        <?php
-                        foreach (LivroRepository::listAll() as $livro) {
-                            if (EmprestimoRepository::countByLivro($livro->getId()) == 0) {
-                        ?>
-                                <option value="<?php echo $livro->getId(); ?>">
-                                    <?php echo $livro->getTitulo() ?>
-                                </option>
-                        <?php }
-                        } ?>
-                    </select>
+                    <input type="text" name="livro_id" class="form-control" id="livro_id" value="<?php $livro = LivroRepository::get($emprestimo->getLivroId());
+                    echo $emprestimo->getLivroId() . " - " . $livro->getTitulo(); ?>" disabled>
+
                     <br>
+                    <label for="cliente" class="form-label" style="color: black;">Cliente:</label>
                     <br>
-                    <label for="cliente" class="form-label" style="color: black;">Clientes:</label>
+                    <input type="text" name="cliente_id" class="form-control" id="cliente_id" value="<?php $cliente = ClienteRepository::get($emprestimo->getClienteId());
+                                echo $emprestimo->getClienteId() . " - " . $cliente->getNome(); ?>" disabled>
                     <br>
-                    <select name="cliente" id="cliente">
-                        <?php
-                        foreach (ClienteRepository::listAll() as $cliente) {
-                            if (EmprestimoRepository::countByCliente($cliente->getId()) == 0) {
-                        ?>
-                                <option value="<?php echo $cliente->getId(); ?>">
-                                    <?php echo $cliente->getNome() ?>
-                                </option>
-                        <?php }
-                        } ?>
-                    </select>
-                    <br>
-                    <br>
-                    <label for="nome" class="form-label" style="color: black;">Data Vencimento</label>
-                    <input type="text" name="data_vencimento" class="form-control" id="data_vencimento" value="<?php echo $emprestimo->getDataVencimento("d/m/Y") ?>" disabled>
+                    <label for="nome" class="form-label" style="color: black;">Nova Data de Vencimento</label>
+                    <input type="text" class="form-control" name="data_vencimento"  value="<?php echo $emprestimo_novo->getDataVencimento('d/m/Y');?>" readonly>
 
 
                 </div>
                 <div class="mb-3">
+                <input type="hidden" name="id" value="<?php echo $emprestimo->getId(); ?>">
                     <a href="emprestimo.listagem.php" class="btn btn-danger">Voltar</a>
                     <button type="submit" class="btn btn-info">Enviar</button>
                 </div>

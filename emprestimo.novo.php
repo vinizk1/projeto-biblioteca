@@ -134,7 +134,7 @@ $emprestimo = Factory::emprestimo();
                     <br>
                     <br>
                     <label for="nome" class="form-label" style="color: black;">Data Vencimento</label>
-                    <input type="text" name="data_vencimento" class="form-control" id="data_vencimento" value="<?php echo $emprestimo->getDataVencimento("d/m/Y") ?>" disabled>
+                    <input type="text" name="data_vencimento" class="form-control" id="data_vencimento" value="<?php echo $emprestimo->getDataVencimento("d/m/Y") ?>" readonly>
 
 
                 </div>

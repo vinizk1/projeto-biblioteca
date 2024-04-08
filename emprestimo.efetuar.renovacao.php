@@ -8,15 +8,15 @@ if (!Auth::isAuthenticated()) {
 
 $user = Auth::getUser();
 
-if(!isset($_GET['id'])){
+if(!isset($_POST['id'])){
     header("location: emprestimo.listagem.php?1");
     exit();
 }
-if($_GET["id"] == "" || $_GET["id"] == null){
+if($_POST["id"] == "" || $_POST["id"] == null){
     header("location: emprestimo.listagem.php?2");
     exit();
 }
-$emprestimo = EmprestimoRepository::get($_GET["id"]);
+$emprestimo = EmprestimoRepository::get($_POST["id"]);
 if(!$emprestimo){
     header("location: emprestimo.listagem.php?3");
     exit();
@@ -31,11 +31,18 @@ if (!(
         exit();
     }
 
+$datetime = DateTime::createFromFormat('d/m/Y', $_POST["data_vencimento"]);
+$dateFormatted = $datetime->format('Y-m-d');
+
 $novo_emprestimo = Factory::emprestimo();
 
-$emprestimo->setDataVencimento($novo_emprestimo->getDataVencimento());
+$emprestimo->setDataRenovacao(date('Y-m-d'));
+$emprestimo->setDataAlteracao(date('Y-m-d'));
+$emprestimo->setAlteracaoFuncionarioId($user->getId());
+$emprestimo->setRenovacaoFuncionarioId($user->getId());
+$emprestimo->setDataVencimento($dateFormatted);
 
 
-EmprestimoRepository::update($emprestimo->getId());
+EmprestimoRepository::update($emprestimo);
 
 header("Location: emprestimo.listagem.php?5");
