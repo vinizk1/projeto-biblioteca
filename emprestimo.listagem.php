@@ -155,6 +155,14 @@ if (!Auth::isAuthenticated()) {
                                   <a href="emprestimo.renovar.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-warning">Renovar</a>
                                 <?php } ?>
 
+                                <?php 
+                                if(
+                                $emprestimo->getDataDevolucao() == null
+                                ){?>
+                                  <a href="emprestimo.devolver.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-info">Devolver</a>
+                                <?php } ?>
+                                
+
                             </td>
                         </tr>
                     <?php
