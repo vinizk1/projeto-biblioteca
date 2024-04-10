@@ -108,7 +108,7 @@ $emprestimo = Factory::emprestimo();
                     <select name="livro_id" id="livro_id">
                         <?php
                         foreach (LivroRepository::listAll() as $livro) {
-                            if (EmprestimoRepository::countByLivro($livro->getId()) == 0) {
+                            if (EmprestimoRepository::countByLivro($livro->getId()) == 0 || EmprestimoRepository::countByLivrosDevol($livro->getId()) > 0) {
                         ?>
                                 <option value="<?php echo $livro->getId(); ?>">
                                     <?php echo $livro->getTitulo() ?>
@@ -123,7 +123,7 @@ $emprestimo = Factory::emprestimo();
                     <select name="cliente" id="cliente">
                         <?php
                         foreach (ClienteRepository::listAll() as $cliente) {
-                            if (EmprestimoRepository::countByCliente($cliente->getId()) == 0) {
+                            if (EmprestimoRepository::countByCliente($cliente->getId()) == 0 || EmprestimoRepository::countByClientesDevol($cliente->getId()) > 0){
                         ?>
                                 <option value="<?php echo $cliente->getId(); ?>">
                                     <?php echo $cliente->getNome() ?>

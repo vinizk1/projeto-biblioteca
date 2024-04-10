@@ -133,7 +133,7 @@ if (!Auth::isAuthenticated()) {
                                 echo $emprestimo->getClienteId() . " - " . $cliente->getNome(); ?>
                             </td>
                             <td><?php echo $emprestimo->getDataVencimento("d/m/Y"); ?> </td>
-                            <td><?php echo $emprestimo->getDataDevolucao(); ?> </td>
+                            <td><?php echo $emprestimo->getDataDevolucao("d/m/Y"); ?> </td>
 
                             <td>
                                 <?php 
@@ -142,7 +142,7 @@ if (!Auth::isAuthenticated()) {
                                 $emprestimo->getDataRenovacao() == null &&
                                 $emprestimo->getDataAlteracao() == null
                                 ){?>
-                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-success">Devolvido</a>
+                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-success">Excluir</a>
                                 <?php } ?>
 
                             </td>

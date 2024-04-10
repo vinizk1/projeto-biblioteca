@@ -76,13 +76,8 @@ class Emprestimo{
         $this->data_renovacao = $data_renovacao;
     }
 
-    public function getDataDevolucao($format = "Y-m-d"){
-        $datetime = DateTime::createFromFormat("Y-m-d",$this->data_devolucao);
-
-        if($datetime){
-            return $datetime->format($format);
-        }
-        return null;
+    public function getDataDevolucao(){
+        return $this->data_devolucao;
     }
 
     public function setDataDevolucao($data_devolucao){

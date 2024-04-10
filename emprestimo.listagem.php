@@ -118,7 +118,7 @@ if (!Auth::isAuthenticated()) {
                 </thead>
                 <tbody>
 
-                    <?php
+                <?php
                     foreach (EmprestimoRepository::listAll() as $emprestimo) {
                     ?>
 
@@ -134,35 +134,36 @@ if (!Auth::isAuthenticated()) {
                                 echo $emprestimo->getClienteId() . " - " . $cliente->getNome(); ?>
                             </td>
                             <td><?php echo $emprestimo->getDataVencimento("d/m/Y"); ?> </td>
-                            <td><?php echo $emprestimo->getDataDevolucao(); ?> </td>
+                            <td><?php echo $emprestimo->getDataDevolucao("d/m/Y H:i:s "); ?> </td>
 
-                            <td>
-                                <?php 
+                           <td> 
+                           <?php 
                                 if(
-                                $emprestimo->getDataRenovacao() == null &&
+                                $emprestimo->getDataVencimento("Y-m-d") >= date("Y-m-d") == null &&
                                 $emprestimo->getDataRenovacao() == null &&
                                 $emprestimo->getDataAlteracao() == null
                                 ){?>
-                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-danger">Excluir</a>
+                                  <a href="emprestimo.renovar.php" class="btn btn-primary">Renovar</a>
                                 <?php } ?>
-
-                                <?php 
-                                if(
-                                $emprestimo->getDataVencimento("Y-m-d") >= date("Y-m-d") &&
-                                $emprestimo->getDataRenovacao() == null &&
-                                $emprestimo->getDataAlteracao() == null
-                                ){?>
-                                  <a href="emprestimo.renovar.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-warning">Renovar</a>
-                                <?php } ?>
-
-                                <?php 
+                            <?php 
                                 if(
                                 $emprestimo->getDataDevolucao() == null
                                 ){?>
                                   <a href="emprestimo.devolver.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-info">Devolver</a>
+                                  
                                 <?php } ?>
-                                
+                        
+                                <?php   
+                                if(
+                                $emprestimo->getDataRenovacao() == null &&
+                                $emprestimo->getDataRenovacao() == null &&
+                                $emprestimo->getDataAlteracao() == null
+                                ){?>
 
+                                  <a href="emprestimo.excluir.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-danger">Excluir</a>
+                                <?php } ?>
+
+                                
                             </td>
                         </tr>
                     <?php

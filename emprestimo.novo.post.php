@@ -42,7 +42,7 @@ if(
 }
 
 $emprestimo = Factory::emprestimo();
-
+date_default_timezone_set("American/Sao_Paulo");
 $emprestimo->setLivroId($_POST["livro_id"]);
 $emprestimo->setClienteId($_POST["cliente"]);
 $emprestimo->setInclusaoFuncionarioId($user->getId());
