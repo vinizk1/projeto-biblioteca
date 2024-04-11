@@ -139,7 +139,7 @@ if (!Auth::isAuthenticated()) {
                            <td> 
                            <?php 
                                 if(
-                                $emprestimo->getDataVencimento("Y-m-d") >= date("Y-m-d") == null &&
+                                $emprestimo->getDataVencimento("Y-m-d") >= date("Y-m-d")  &&
                                 $emprestimo->getDataRenovacao() == null &&
                                 $emprestimo->getDataAlteracao() == null
                                 ){?>

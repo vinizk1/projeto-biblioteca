@@ -21,7 +21,6 @@ if(!$emprestimo){
     exit();
 }
 
-date_default_timezone_set("American/Sao_Paulo");
 $emprestimo->setDataAlteracao(date('Y-m-d'));
 $emprestimo->setAlteracaoFuncionarioId($user->getId());
 $emprestimo->setDevolucaoFuncionarioId($user->getId());
