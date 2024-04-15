@@ -44,6 +44,6 @@ $funcionario->setDataAlteracao(date("Y-m-d H:i:s"));
 
 FuncionarioRepository::update($funcionario);
 
-header("location: alterar.senha.php?id=".$funcionario->getId());
+header("location: funcionarios.listagem.php?id=".$funcionario->getId());
 
 ?>

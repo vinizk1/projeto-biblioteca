@@ -45,10 +45,10 @@ $livro->setDataInclusao(date("Y-m-d H:i:s"));
 $livro_retorno = LivroRepository::insert($livro);
 
 if($livro_retorno > 0){
-    header("location: livro.editar.php?id=". $livro_retorno);
+    header("location: livro.listagem.php?id=". $livro_retorno);
     exit();
 }
 
-header("location: livro.novo.php");
+header("location: livro.listagem.php");
 
 ?>

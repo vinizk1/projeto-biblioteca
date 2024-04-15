@@ -47,4 +47,4 @@ $livro->setDataAlteracao(date("Y-m-d H:i:s"));
 
 LivroRepository::update($livro);
 
-header("location: livro.editar.php?id=".$livro->getId());
+header("location: livro.listagem.php?id=".$livro->getId());

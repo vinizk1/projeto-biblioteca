@@ -34,20 +34,21 @@ if( $_POST["livro_id"] == "" || $_POST ["livro_id"] == null){
 
 
 if(
-    EmprestimoRepository::countByClienteWithNotFinished($_POST["cliente_id"]) > 0
+    EmprestimoRepository::countByClienteWithNotFinished($_POST["cliente"]) > 0
     ||
     EmprestimoRepository::countByLivroWithNotFinished($_POST["livro_id"] > 0)
 ){
     header("location: emprestimo.novo.php");
 }
 
-$emprestimo = Factory::emprestimo();
-date_default_timezone_set("American/Sao_Paulo");
-$emprestimo->setLivroId($_POST["livro_id"]);
-$emprestimo->setClienteId($_POST["cliente"]);
-$emprestimo->setInclusaoFuncionarioId($user->getId());
-$emprestimo->setDataInclusao(date("Y-m-d H:i:s"));
 
+date_default_timezone_set('America/Sao_Paulo');
+$emprestimo = Factory::emprestimo();
+
+$emprestimo->setClienteId($_POST['cliente']);
+$emprestimo->setLivroId($_POST['livro_id']);
+$emprestimo->setInclusaoFuncionarioId($user->getID());
+$emprestimo->setDataInclusao(date('Y-m-d H:i:s'));
 $emprestimo_retorno = EmprestimoRepository::insert($emprestimo);
 
 if($emprestimo_retorno > 0){
@@ -55,6 +56,6 @@ if($emprestimo_retorno > 0){
     exit();
 }
 
-header("location: emprestimo.novo.php");
+header("location: emprestimo.listagem.php");
 
 ?>

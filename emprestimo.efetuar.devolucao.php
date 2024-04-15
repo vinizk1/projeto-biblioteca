@@ -20,7 +20,7 @@ if(!$emprestimo){
     header("location: emprestimo.listagem.php?3");
     exit();
 }
-
+date_default_timezone_set('America/Sao_Paulo');
 $emprestimo->setDataAlteracao(date('Y-m-d'));
 $emprestimo->setAlteracaoFuncionarioId($user->getId());
 $emprestimo->setDevolucaoFuncionarioId($user->getId());

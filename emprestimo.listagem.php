@@ -101,7 +101,6 @@ if (!Auth::isAuthenticated()) {
         <br>
         <div id="button">
             <button class="btn btn-info"> <a href="emprestimo.novo.php"> Adicionar Emprestimo</a></button>
-            <button class="btn btn-info"> <a href="emprestimo.ativo.php"> Ver Emprestimos Ativos</a></button>
         </div>
         <br>
         <div class="table-responsive">
@@ -134,16 +133,16 @@ if (!Auth::isAuthenticated()) {
                                 echo $emprestimo->getClienteId() . " - " . $cliente->getNome(); ?>
                             </td>
                             <td><?php echo $emprestimo->getDataVencimento("d/m/Y"); ?> </td>
-                            <td><?php echo $emprestimo->getDataDevolucao("d/m/Y H:i:s "); ?> </td>
+                            <td><?php echo $emprestimo->getDataDevolucao("d/m/Y H:i:s"); ?> </td>
 
                            <td> 
                            <?php 
                                 if(
-                                $emprestimo->getDataVencimento("Y-m-d") >= date("Y-m-d")  &&
+                                $emprestimo->getDataVencimento("Y-m-d") >= date("Y-m-d") &&
                                 $emprestimo->getDataRenovacao() == null &&
                                 $emprestimo->getDataAlteracao() == null
-                                ){?>
-                                  <a href="emprestimo.renovar.php" class="btn btn-primary">Renovar</a>
+                                ){ ?>
+                                  <a href="emprestimo.renovar.php?id=<?php echo $emprestimo->getId(); ?>" class="btn btn-warning">Renovar</a>
                                 <?php } ?>
                             <?php 
                                 if(

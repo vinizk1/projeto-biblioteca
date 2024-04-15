@@ -10,11 +10,11 @@ if (!Auth::isAuthenticated()) {
 $user = Auth::getUser();
 
 if(!isset($_POST["nome"])){
-    header("location: autor.novo.php?1");
+    header("location: autor.novo.php");
     exit();
 }
 if($_POST["nome"] == "" || $_POST["nome"] == null){
-    header("location: autor.novo.php?2");
+    header("location: autor.novo.php");
     exit();
 }
 
@@ -27,9 +27,9 @@ $autor->setDataInclusao(date("Y-m-d H:i:s"));
 $autor_retorno = AutorRepository::insert($autor);
 
 if ($autor_retorno > 0){
-    header("location: autor_editar.php?id=".$autor_retorno);
+    header("location: autor.listagem.php?id=".$autor_retorno);
     exit();
 }
 
-header("location: autor.novo.php?3");
+header("location: autor.listagem.php");
 ?>

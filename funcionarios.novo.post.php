@@ -50,7 +50,7 @@ if($_POST["email"] == "" || $_POST["email"] == null){
     header("location: funcionarios.novo.php?2");
     exit();
 }
-
+date_default_timezone_set('America/Sao_Paulo');
 $funcionario = Factory::funcionario();
 
 $funcionario->setNome($_POST["nome"]);
@@ -64,9 +64,9 @@ $funcionario->setDataInclusao(date("Y-m-d H:i:s"));
 $funcionario_retorno = FuncionarioRepository::insert($funcionario);
 
 if ($funcionario_retorno > 0){
-    header("location: funcionarios_editar.php?id=".$funcionario_retorno);
+    header("location: funcionarios.listagem.php?id=".$funcionario_retorno);
     exit();
 }
 
-header("location: funcionarios.novo.php?3");
+header("location: funcionarios.listagem.php");
 ?>

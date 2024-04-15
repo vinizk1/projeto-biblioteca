@@ -42,7 +42,7 @@ if($_POST["data_nascimento"] == "" || $_POST["data_nascimento"] == null){
     header("location: cliente.novo.php?2");
     exit();
 }
-
+date_default_timezone_set('America/Sao_Paulo');
 $cliente = Factory::cliente();
 
 $cliente->setNome($_POST["nome"]);
@@ -57,9 +57,9 @@ $cliente->setDataInclusao(date("Y-m-d H:i:s"));
 $cliente_retorno = ClienteRepository::insert($cliente);
 
 if ($cliente_retorno > 0){
-    header("location: cliente.editar.php?id=".$cliente_retorno);
+    header("location: cliente.listagem.php?id=".$cliente_retorno);
     exit();
 }
 
-header("location: cliente.novo.php?3");
+header("location: cliente.listagem.php?3");
 ?>

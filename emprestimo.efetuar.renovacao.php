@@ -30,7 +30,7 @@ if (!(
         header("location: emprestimo.listagem.php?4");
         exit();
     }
-
+    date_default_timezone_set('America/Sao_Paulo');
 $datetime = DateTime::createFromFormat('d/m/Y', $_POST["data_vencimento"]);
 $dateFormatted = $datetime->format('Y-m-d');
 

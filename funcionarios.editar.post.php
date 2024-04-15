@@ -38,7 +38,7 @@ if( $_POST["nome"] == "" || $_POST ["nome"] == null){
     exit();
 }
 
-
+date_default_timezone_set('America/Sao_Paulo');
 $funcionario->setNome($_POST["nome"]);
 $funcionario->setCpf($_POST["cpf"]);
 $funcionario->setTelefone($_POST["telefone"]);
@@ -49,6 +49,6 @@ $funcionario->setDataAlteracao(date("Y-m-d H:i:s"));
 
 FuncionarioRepository::update($funcionario);
 
-header("location: funcionarios.editar.php?id".$funcionario->getId());
+header("location: funcionarios.listagem.php?id".$funcionario->getId());
 
 ?>

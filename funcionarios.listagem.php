@@ -95,7 +95,7 @@ if (!Auth::isAuthenticated()) {
     <?php include("navbar.php") ?>
     <div class="header">
         <h1>Listagem de Funcionarios da Biblioteca do Urubu</h1>
-        <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
+        <img src="https://media-gru1-2.cdn.whatsapp.net/v/t61.24694-24/427448038_308706098910550_7498972035424756462_n.jpg?ccb=11-4&oh=01_ASA9ndp7U7QMr1N9TTWZFzUgYCoXSTIwaXvX8sAMgCaD9g&oe=662699B2&_nc_sid=e6ed6c&_nc_cat=107" alt="Logo da Biblioteca">
     </div>
     <div class="container">
         <br>

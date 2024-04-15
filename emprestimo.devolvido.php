@@ -133,7 +133,7 @@ if (!Auth::isAuthenticated()) {
                                 echo $emprestimo->getClienteId() . " - " . $cliente->getNome(); ?>
                             </td>
                             <td><?php echo $emprestimo->getDataVencimento("d/m/Y"); ?> </td>
-                            <td><?php echo $emprestimo->getDataDevolucao("d/m/Y"); ?> </td>
+                            <td><?php echo $emprestimo->getDataDevolucao("d/m/Y H:i:s"); ?> </td>
 
                             <td>
                                 <?php 
