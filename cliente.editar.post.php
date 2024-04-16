@@ -8,6 +8,11 @@ if (!Auth::isAuthenticated()) {
 
 $user = Auth::getUser();
 
+if($_POST["data_nascimento"] >= date("Y-m-d")){
+    header("location: cliente.novo.php?DataNascMenor");
+    exit();
+}
+
 if (!isset($_POST["id"])) {
     header("location: cliente.listagem.php");
     exit();

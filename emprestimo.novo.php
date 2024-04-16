@@ -96,7 +96,7 @@ $emprestimo = Factory::emprestimo();
 <body>
     <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Adicionar Emprestimo na Biblioteca do Urubu</h1>
+        <h1>Adicionar Empréstimo na Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="row mt-4">

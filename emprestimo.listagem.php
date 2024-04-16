@@ -94,13 +94,13 @@ if (!Auth::isAuthenticated()) {
 <body>
     <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Emprestimos da Biblioteca do Urubu</h1>
+        <h1>Listagem de Empréstimos da Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">
         <br>
         <div id="button">
-            <button class="btn btn-info"> <a href="emprestimo.novo.php"> Adicionar Emprestimo</a></button>
+            <button class="btn btn-info"> <a href="emprestimo.novo.php">Adicionar Empréstimo</a></button>
         </div>
         <br>
         <div class="table-responsive">

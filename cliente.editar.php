@@ -130,7 +130,7 @@ if(!$cliente){
                     <input type="text" name="rg" class="form-control" id="rg" value="<?php echo $cliente->getRg(); ?>">
 
                     <label for="nome" class="form-label" style="color: black;">Data Nascimento</label>
-                    <input type="text" name="data_nascimento" class="form-control" id="data_nascimento" value="<?php echo $cliente->getDataNascimento(); ?>">
+                    <input type="date" name="data_nascimento" class="form-control" id="data_nascimento" value="<?php echo $cliente->getDataNascimento(); ?>">
 
                 </div>
                 <div class="mb-3">  

@@ -9,6 +9,8 @@ if (!Auth::isAuthenticated()) {
 
 $user = Auth::getUser();
 
+
+
 if(!isset($_POST["nome"])){
     header("location: autor.novo.php");
     exit();

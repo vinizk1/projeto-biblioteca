@@ -94,7 +94,7 @@ if (!Auth::isAuthenticated()) {
 <body>
     <?php include("navbar.php") ?>
     <div class="header">
-        <h1>Listagem de Emprestimos Ativos da Biblioteca do Urubu</h1>
+        <h1>Listagem de Empréstimos Ativos da Biblioteca do Urubu</h1>
         <img src="http://www.emporiodenoticias.com/wp-content/uploads/2016/02/urubu-de-cabe%C3%A7a-vermelha-696x392.jpg" alt="Logo da Biblioteca">
     </div>
     <div class="container">

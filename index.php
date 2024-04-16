@@ -101,7 +101,7 @@
     <br>
     <button class="btn btn-primary btn-option"><a href="autor.listagem.php">Autor</a></button>
     <button class="btn btn-primary btn-option"><a href="cliente.listagem.php">Cliente</a></button>
-    <button class="btn btn-primary btn-option"><a href="emprestimo.listagem.php">Empréstimo</button>
+    <button class="btn btn-primary btn-option"><a href="emprestimo.listagem.php">Empréstimo</a></button>
     <button class="btn btn-primary btn-option"><a href="funcionarios.listagem.php">Funcionários</a></button>
     <button class="btn btn-primary btn-option"><a href="livro.listagem.php">Livro</a></button>
 </form>
